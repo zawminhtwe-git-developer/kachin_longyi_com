@@ -34,7 +34,7 @@
           content="'Sein Sein' Kachinlongyi.com Website သည် Customers များကို (၁၀၀%) ဝန်ဆောင်မှုပေးသော Online Shopping တစ်ခုဖြစ်ပါသည်။ Kachinlongyi.com မှ ဝယ်ယူသော ပစ္စည်းများကို သက်ဆိုင်ရာ မြို့နယ်အသီးသီးသို့ စာတိုက်မှလည်းကောင်း၊ ကားဂိတ်မှလည်းကောင်း ပို့ဆောင်ပေးလျက် ရှိနေပြီဖြစ်ပါသည်။ Kachinlongyi.com မှဝယ်ယူသော ပစ္စည်းများကို ငွေပေးချေရာတွင် KBZ Pay၊ Wave Money Pay၊ Myanmar Economic Bank တို့မှလည်း ပေးချေနိုင်ပြီဖြစ်ပါသည်။">
     <meta property="twitter:image" content="{{asset('images/logo/profile real.jpg') }}">
 
-    <link rel="icon" href="{{ asset('images/logo/profile real.jpg') }}">
+    <link rel="icon" class="rounded" href="{{ asset('images/logo/profile real.jpg') }}">
 
 
     <!-- Fonts -->
@@ -43,7 +43,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    @yield('head')
     <style>
         :root {
             --offcanvas-width: 250px;
@@ -91,71 +91,12 @@
                 height: calc(100% - var(--topNavbarHeight));
             }
         }
-    </style>
 
-    @yield('head')
+    </style>
 
 </head>
 <body>
-
 <div id="app">
-    {{--    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">--}}
-    {{--        <div class="container">--}}
-    {{--            <a class="navbar-brand" href="{{ url('/') }}">--}}
-    {{--                {{ config('app.name', 'Laravel') }}--}}
-    {{--            </a>--}}
-    {{--            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"--}}
-    {{--                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"--}}
-    {{--                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">--}}
-    {{--                <span class="navbar-toggler-icon"></span>--}}
-    {{--            </button>--}}
-
-    {{--            <div class="collapse navbar-collapse" id="navbarSupportedContent">--}}
-    {{--                <!-- Left Side Of Navbar -->--}}
-    {{--                <ul class="navbar-nav me-auto">--}}
-
-    {{--                </ul>--}}
-
-    {{--                <!-- Right Side Of Navbar -->--}}
-    {{--                <ul class="navbar-nav ms-auto">--}}
-    {{--                    <!-- Authentication Links -->--}}
-    {{--                    @guest--}}
-    {{--                        @if (Route::has('login'))--}}
-    {{--                            <li class="nav-item">--}}
-    {{--                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>--}}
-    {{--                            </li>--}}
-    {{--                        @endif--}}
-
-    {{--                        @if (Route::has('register'))--}}
-    {{--                            <li class="nav-item">--}}
-    {{--                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>--}}
-    {{--                            </li>--}}
-    {{--                        @endif--}}
-    {{--                    @else--}}
-    {{--                        <li class="nav-item dropdown">--}}
-    {{--                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"--}}
-    {{--                               data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>--}}
-    {{--                                {{ Auth::user()->name }}--}}
-    {{--                            </a>--}}
-
-    {{--                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">--}}
-    {{--                                <a class="dropdown-item" href="{{ route('logout') }}"--}}
-    {{--                                   onclick="event.preventDefault();--}}
-    {{--                                                     document.getElementById('logout-form').submit();">--}}
-    {{--                                    {{ __('Logout') }}--}}
-    {{--                                </a>--}}
-
-    {{--                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">--}}
-    {{--                                    @csrf--}}
-    {{--                                </form>--}}
-    {{--                            </div>--}}
-    {{--                        </li>--}}
-    {{--                    @endguest--}}
-    {{--                </ul>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </nav>--}}
-    {{--navbar start--}}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
             {{--            offcanvas trigger--}}
@@ -165,7 +106,7 @@
                 <span class="navbar-toggler-icon" data-bs-target="#offcanvasExample"></span>
             </button>
             {{--            offcanvas trigger--}}
-            <a class="navbar-brand fw-bold text-uppercase me-auto" href="#">{{config('app.name')}}</a>
+            <a class="navbar-brand fw-bold text-uppercase me-auto" href="{{ url("/") }}">{{config('app.name')}}</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -183,15 +124,14 @@
                     </div>
                 </form>
                 <ul class="navbar-nav mb-2 mb-lg-0">
-
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-person-fill"></i>
+                            <img src="{{isset(Auth::user()->photo)?asset('storage/profile/'.Auth::user()->photo) : asset('images/logo/me.jpg')}}" class="rounded-circle" style="width: 25px; height: 25px;" alt="">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="{{route("profile")}}">Profile</a></li>
+                            <li><a class="dropdown-item" href="{{route("user-manager.changeProfile")}}">Edit Information</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -214,7 +154,6 @@
         </div>
     </nav>
     {{--navbar stop--}}
-
 
     {{--offcanvas start--}}
     <div class="offcanvas offcanvas-start bg-dark text-white sidebar-nav" tabindex="-1" id="offcanvasExample"
@@ -239,24 +178,162 @@
             <nav class="navbar-dark">
                 <ul class="navbar-nav">
                     <li>
-                        <div class="text-muted text-uppercase small fw-bold px-3">
+                        <div class="text-black text-uppercase small fw-bold px-3">
                             Core
                         </div>
                     </li>
                     <li>
-                        <a href="#" class="nav-link px-3 active">
+                        <a href="{{route("home")}}" class="nav-link px-3 {{request()->routeIs("home")?"active":""}}">
                             <span class="me-2">
                                 <i class="bi bi-speedometer2"></i>
                             </span>
-                            <span>Dashboard</span>
+                            @if(auth()->user())
+                                @if(auth()->user()->role == 0)
+                                    <span>Dashboard</span>
+                                @elseif(auth()->user()->role == 1)
+                                    <span>Role 1 user view</span>
+                                @elseif(auth()->user()->role == 2)
+                                    <span>Role 2 user view</span>
+                                @endif
+                            @endif
                         </a>
                     </li>
+
                     <li class="my-3">
                         <hr class="dropdown-divider">
-
                     </li>
+
+{{--                    *********************************************************************************--}}
+
                     <li>
-                        <div class="text-muted text-uppercase small fw-bold px-3">
+                        <div class="text-black text-uppercase small fw-bold px-3">
+                            Categories & Products
+                        </div>
+                    </li>
+                    @if(auth()->user()->role == 0)
+                    <li>
+                        <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#collapseExample0"
+                           role="button" aria-expanded="false" aria-controls="collapseExample0">
+                            <span class="me-2">
+                                <i class="bi bi-layout-split"></i>
+                            </span>
+                            <span>Category</span>
+                            <span class="right-icon ms-auto">
+                                <i class="bi bi-chevron-down"></i>
+                            </span>
+                        </a>
+                        <div class="collapse" id="collapseExample0">
+                            <div class="">
+                                <ul class="navbar-nav ps-3">
+                                    <li>
+                                        <a href="{{route("category.create")}}" class="nav-link px-3 {{request()->routeIs("category.create")?"active":""}}">
+                                            <span class="me-2">
+                                            <i class="bi bi-postcard"></i>
+                                            </span>
+                                            <span>Create Category</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route("category.index")}}" class="nav-link px-3 {{request()->routeIs("category.index")?"active":""}}">
+                                            <span class="me-2">
+                                            <i class="bi bi-card-list"></i>
+                                            </span>
+                                            <span>View Category</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    @endif
+                    <li>
+                        <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#collapseExample1"
+                           role="button" aria-expanded="false" aria-controls="collapseExample1">
+                            <span class="me-2">
+                                <i class="bi bi-layout-split"></i>
+                            </span>
+                            <span>Product</span>
+                            <span class="right-icon ms-auto">
+                                <i class="bi bi-chevron-down"></i>
+                            </span>
+                        </a>
+                        <div class="collapse" id="collapseExample1">
+                            <div class="">
+                                <ul class="navbar-nav ps-3">
+                                    @if(auth()->user()->role == 0)
+                                    <li>
+                                        <a href="{{route("post.create")}}" class="nav-link px-3 {{request()->routeIs("post.create")?"active":""}}">
+                                            <span class="me-2">
+                                            <i class="bi bi-postcard"></i>
+                                            </span>
+                                            <span>Create Product</span>
+                                        </a>
+                                    </li>
+                                    @endif
+                                    <li>
+                                        <a href="{{route("post.index")}}" class="nav-link px-3 {{request()->routeIs("post.index")?"active":""}}">
+                                            <span class="me-2">
+                                            <i class="bi bi-card-list"></i>
+                                            </span>
+                                            <span>View Product</span>
+                                        </a>
+                                    </li>
+                                        <li>
+                                            <a href="{{route("order.index")}}" class="nav-link px-3 {{request()->routeIs("order.index")?"active":""}}">
+                                            <span class="me-2">
+                                            <i class="bi bi-card-list"></i>
+                                            </span>
+                                                <span>My Orders</span>
+                                            </a>
+                                        </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    @if(auth()->user()->role == 0)
+                    <li>
+                        <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#collapseExample4"
+                           role="button" aria-expanded="false" aria-controls="collapseExample4">
+                            <span class="me-2">
+                                <i class="bi bi-layout-split"></i>
+                            </span>
+                            <span>Skill Share</span>
+                            <span class="right-icon ms-auto">
+                                <i class="bi bi-chevron-down"></i>
+                            </span>
+                        </a>
+                        <div class="collapse" id="collapseExample4">
+                            <div class="">
+                                <ul class="navbar-nav ps-3">
+                                    <li>
+                                        <a href="{{route("shareSkill.create")}}" class="nav-link px-3 {{request()->routeIs("shareSkill.create")?"active":""}}">
+                                            <span class="me-2">
+                                            <i class="bi bi-postcard"></i>
+                                            </span>
+                                            <span>Skill Share create</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route("shareSkill.index")}}" class="nav-link px-3 {{request()->routeIs("shareSkill.index")?"active":""}}">
+                                            <span class="me-2">
+                                            <i class="bi bi-card-list"></i>
+                                            </span>
+                                            <span>Skill Share Post</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    @endif
+{{--                    ****************************************************************************************--}}
+                    <li class="my-3">
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <li>
+                        <div class="text-black text-uppercase small fw-bold px-3">
                             Interface
                         </div>
                     </li>
@@ -267,7 +344,7 @@
                             <span class="me-2">
                                 <i class="bi bi-layout-split"></i>
                             </span>
-                            <span>Layouts</span>
+                            <span>All Posts</span>
                             <span class="right-icon ms-auto">
                                 <i class="bi bi-chevron-down"></i>
                             </span>
@@ -276,19 +353,67 @@
                             <div class="">
                                 <ul class="navbar-nav ps-3">
                                     <li>
-                                        <a href="#" class="nav-link px-3">
+                                        <a href="{{route("aboutZawMinHtwe.create")}}" class="nav-link px-3 {{request()->routeIs("aboutZawMinHtwe.create")?"active":""}}">
                                             <span class="me-2">
-                                            <i class="bi bi-layout-split"></i>
+                                            <i class="bi bi-postcard"></i>
                                             </span>
-                                            <span>Nested Link</span>
+                                            <span>Create Post</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="nav-link px-3">
+                                        <a href="{{route("aboutZawMinHtwe.index")}}" class="nav-link px-3 {{request()->routeIs("aboutZawMinHtwe.index")?"active":""}}">
                                             <span class="me-2">
-                                            <i class="bi bi-layout-split"></i>
+                                            <i class="bi bi-card-list"></i>
                                             </span>
-                                            <span>Nested Link</span>
+                                            <span>View Posts</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li class="my-3">
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li>
+                        <div class="text-black text-uppercase small fw-bold px-3">
+                           User Information
+                        </div>
+                    </li>
+                    <li>
+                        <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#collapseExample3"
+                           role="button" aria-expanded="false" aria-controls="collapseExample3">
+                            <span class="me-2">
+                                <i class="bi bi-layout-split"></i>
+                            </span>
+                            <span>Edit User Info:</span>
+                            <span class="right-icon ms-auto">
+                                <i class="bi bi-chevron-down"></i>
+                            </span>
+                        </a>
+                        <div class="collapse" id="collapseExample3">
+                            <div class="">
+                                <ul class="navbar-nav ps-3">
+                                    @if(auth()->user())
+                                        @if(auth()->user()->role == 0)
+                                            <li>
+                                                <a href="{{route("user-manager.index")}}" class="nav-link px-3 {{request()->routeIs("user-manager.index")?"active":""}}">
+                                            <span class="me-2">
+                                            <i class="bi bi-postcard"></i>
+                                            </span>
+                                                    <span>User Lists</span>
+                                                </a>
+                                            </li>
+                                        @endif
+                                    @endif
+                                    <li>
+                                        <a href="{{route("user-manager.changeProfile")}}" class="nav-link px-3 {{request()->routeIs("user-manager.changeProfile")?"active":""}}">
+                                            <span class="me-2">
+                                            <i class="bi bi-card-list"></i>
+                                            </span>
+                                            <span>Change Profile</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -297,13 +422,9 @@
                     </li>
                 </ul>
             </nav>
-
-
         </div>
     </div>
     {{--offcanvas stop--}}
-
-
     <main class="mt-5 pt-3">
         @yield('content')
     </main>
@@ -311,5 +432,8 @@
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
 @yield('foot')
+@stack("scripts")
+
+
 </body>
 </html>

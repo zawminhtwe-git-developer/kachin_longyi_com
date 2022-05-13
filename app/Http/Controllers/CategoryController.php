@@ -5,9 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use App\Models\Post;
+use App\Order;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class CategoryController extends Controller
 {
+
+    public function __construct()
+    {
+        return $this->middleware("isAdmin")->only(["create","edit","store","delete","üpdate","index"]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +26,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+//        Gate::authorize('view');
+        $categories = Category::all();
+        return view("categories.index",compact("categories"));
     }
 
     /**
@@ -25,7 +38,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+//        Gate::authorize("create");
+        return view('categories.create');
     }
 
     /**
@@ -36,7 +50,21 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+//        return request()->url();
+//        return $request;
+        $request->validate([
+            "title"=>"required|unique:categories,title|max:25",
+            "hover"=>"required"
+
+        ]);
+        $category = new Category();
+        $category->title = $request->title;
+        $category->hover= $request->hover;
+        $category->user_id = Auth::id();
+        $category->save();
+        return redirect()->route('category.index')->with("status","Category Create Successfuly");
+
+
     }
 
     /**
@@ -47,7 +75,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return view("categories.show",compact("category"));
     }
 
     /**
@@ -58,7 +86,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+       return view('categories.edit',compact("category"));
     }
 
     /**
@@ -70,7 +98,14 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $request->validate([
+            "title" => "required|unique:categories,title,".$category->id."|min:3"
+        ]);
+
+        $category->title = $request->title;
+        $category->update();
+
+        return redirect()->route('category.index')->with('status',"Category Updated");
     }
 
     /**
@@ -81,6 +116,13 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+//return $category->getOrders;
+        if(isset($category->getOrders)){
+            $toDelete = $category->getOrders->pluck("id");
+            \App\Models\order::destroy($toDelete);
+        }
+        $category->post()->delete();//relationship table delete
+        $category->delete();
+        return redirect()->back()->with('status',"Category Deleted");
     }
 }

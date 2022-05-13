@@ -1,34 +1,58 @@
 @extends('layouts.app')
 @section('content')
-    <div class="custom-product justify-content-center">
-        <div class="col-sm-4">
-            <a href="#">Filter</a>
-        </div>
-        <div class="col-sm-10">
-            <div class="trending-wrapper">
-                <h4>Results For Products</h4>
-                <a class="btn btn-success" href="ordernow">Order Now</a><br><br>
-                @foreach($products as $item)
-                    <div class="row searched-item cart-list-devider">
-                        <div class="col-sm-3">
-                            <a href="detail/{{$item->id}}">
-                                <img class="trending-image" src="{{$item->gallery}}" style="height: 200px" alt="">
-                            </a>
-                        </div>
-                        <div class="col-sm-3">
-                            <h2>{{$item->name}}</h2>
-                            <h5></h5>{{$item->description}}</h2>
-                        </div>
-                        <div class="col-sm-3">
-                            <a href="/removeCart/{{$item->cart_id}}" class="btn btn-warning">Remove From Cart</a>
-                        </div>
+       <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <?php
+                        use App\Http\Controllers\CartController;
+                        $total = CartController::cartItem();
+                        ?>
+                            Cart({{$total}})
                     </div>
-                @endforeach
+                    <div class="card-body">
+                        <table class="table table-responsive table-hover table-bordered">
+                            <tr>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Image</th>
+                                <th>Controls</th>
+                            </tr>
+                            @foreach($carts as $cart)
+                            <tr>
+                                <td>
+                                    {{$cart->name}}
+                                </td>
+                                <td>
+                                    {{\Illuminate\Support\Str::substr($cart->description,1,300)}}...
+                                </td>
+
+                                <td>
+                                    <a href="detail/{{$cart->id}}">
+                                        <img class="trending-image" src="{{'storage/product_photo/'.$cart->gallery}}" style="height: 250px; width: 150px;" alt="">
+                                    </a>
+                                </td>
+                                <td>
+                                    {{$cart->cart_id}}
+                                    <form action="{{route("cart.destroy",$cart->cart_id)}}" method="post">
+                                        @csrf
+                                        @method("DELETE")
+                                        <button class="btn btn-danger text-nowrap">Remove From Cart</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-primary mt-3" href="{{route("order.create")}}">Order Now</a><br><br>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <a class="btn btn-success" href="ordernow">Order Now</a><br><br>
 @endsection
 
 

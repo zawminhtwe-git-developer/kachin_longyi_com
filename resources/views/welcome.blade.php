@@ -8,7 +8,7 @@
         :root {
             --body-color: #b700bc;
             --nav-color: #ed35ef;
-            --nav-color-dark:#b700bc;
+            --nav-color-dark: #b700bc;
             --side-nav: #535353;
             --text-color: #fff;
             --search-bar: #f2f2f2;
@@ -19,7 +19,7 @@
             font-family: 'Source Serif 4', sans-serif;
             margin: 0;
             padding: 0;
-        //box-shadow: border-box;
+        / / box-shadow: border-box;
         }
 
         body {
@@ -33,7 +33,7 @@
             --side-nav: #242526;
             --text-color: #ccc;
             --search-bar: #242526;
-            --search-text:#010718;
+            --search-text: #010718;
         }
 
         nav {
@@ -98,7 +98,7 @@
         .nav-links li a::before {
             content: "";
             position: absolute;
-            left: 50%;
+            left: 45%;
             bottom: 0;
             transform: translateX(50%);
             height: 6px;
@@ -112,19 +112,23 @@
         .nav-links li:hover a::before {
             opacity: 1;
         }
+
         .nav-links li a.nocolor::before {
             opacity: 0;
         }
+
         .nav-links li a.nocolor:hover::before {
             opacity: 1;
         }
-        .nav-links li a.nocolor:hover{
+
+        .nav-links li a.nocolor:hover {
             width: 50%;
             margin-left: 45px;
             justify-content: center;
-            margin-right:45px;
+            margin-right: 45px;
             transition: all 0.5s ease-in;
         }
+
         .nav-bar .darkLight-searchBox {
             display: flex;
             align-items: center;
@@ -256,14 +260,15 @@
             color: var(--text-color);
         }
 
-        .dropdown-content a{
+        .dropdown-content a {
             color: var(--nav-color);
         }
 
-        @media(max-width: 790px) {
+        @media (max-width: 790px) {
             nav .nav-bar .sideBarOpen {
                 display: block;
             }
+
             .menu {
                 position: fixed;
                 height: 100%;
@@ -276,14 +281,17 @@
                 transition: all 0.4s ease;
 
             }
+
             nav.active .menu {
                 left: -0%;
             }
+
             nav.active .nav-bar .navLogo a {
                 opacity: 0;
                 transition: all 0.3s ease-in;
 
             }
+
             .menu .logo-toggle {
                 display: block;
                 width: 100%;
@@ -298,10 +306,12 @@
                 cursor: pointer;
                 border: white solid;
             }
+
             .nav-bar .nav-links {
                 flex-direction: column;
                 padding-top: 30px;
             }
+
             .nav-links li a {
                 display: block;
                 margin-top: 20px;
@@ -313,18 +323,19 @@
         /*//drop down css start*/
 
 
-          li a, .dropbtn {
-              display: inline-block;
-              color: white;
-              text-align: center;
-              /*padding: 14px 16px;*/
-              text-decoration: none;
-          }
+        li a, .dropbtn {
+            display: inline-block;
+            color: white;
+            text-align: center;
+            /*padding: 14px 16px;*/
+            text-decoration: none;
+        }
 
         li a:hover, .dropdown:hover .dropbtn {
-            background-color:  var(--nav-color);
-            border-radius: 50%;
+            background-color: var(--nav-color);
+            border-radius: 20px;
             text-align: center;
+            margin-bottom: 8px;
 
         }
 
@@ -335,9 +346,9 @@
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color:var( --nav-color);
+            background-color: var(--nav-color);
             min-width: 200px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             z-index: 1;
         }
 
@@ -349,184 +360,111 @@
             text-align: left;
         }
 
-        .dropdown-content a:hover {background-color: var(--nav-color);}
+        .dropdown-content a:hover {
+            background-color: var(--nav-color);
+        }
 
         .dropdown:hover .dropdown-content {
             display: block;
         }
+
         /*//drop down css stop*/
 
+
+        /*cssbutton.io*/
+        /* From cssbuttons.io by @alexroumi */
+        button {
+            padding: 10px 20px;
+            border: unset;
+            border-radius: 25px;
+            color: var(--nav-color);
+            z-index: 1;
+            background: var(--body-color);
+            position: relative;
+            font-weight: 500;
+            font-size: 17px;
+            -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+            box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+            transition: all 250ms;
+            overflow: hidden;
+            margin-bottom: 8px;
+
+        }
+        button a{
+            text-decoration: none;
+        }
+
+        button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0;
+            border-radius: 25px;
+            background-color: var(--nav-color);
+            z-index: -1;
+            -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+            box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+            transition: all 300ms
+        }
+
+        button:hover {
+            color: #e8e8e8;
+        }
+
+        button:hover::before {
+            width: 100%;
+        }
+        /*cssbutton.io*/
+        .footer-body-color{
+            background: var(--nav-color);
+        }
+
     </style>
-    @endsection
-@section('content')
-    <div class="row">
-        <div class="col-4">
-           <div class="card bg-primary">
-               <div class="card-header">
-                    <i class="fas fa-book-open" style="color:var(--text-color)">Create Category</i>
-               </div>
-               <div class="card-body">
-                    <lable class="form-label text-white">Category</lable>
-                   <input class="form-control">
-               </div>
-               <div class="card-footer">
-                    <button class="btn btn-primary text-white">Save</button>
-               </div>
-           </div>
-        </div>
-        <div class="col-4">
-            <div class="card bg-primary">
-                <div class="card-header">
-                    <i class="fas fa-book-open" style="color:var(--text-color)">Create Category</i>
-                </div>
-                <div class="card-body">
-                    <lable class="form-label text-white">Category</lable>
-                    <input class="form-control">
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-primary text-white">Save</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="card bg-primary">
-                <div class="card-header">
-                    <i class="fas fa-book-open" style="color:var(--text-color)">Create Category</i>
-                </div>
-                <div class="card-body">
-                    <lable class="form-label text-white">Category</lable>
-                    <input class="form-control">
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-primary text-white">Save</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="card bg-primary">
-                <div class="card-header">
-                    <i class="fas fa-book-open" style="color:var(--text-color)">Create Category</i>
-                </div>
-                <div class="card-body">
-                    <lable class="form-label text-white">Category</lable>
-                    <input class="form-control">
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-primary text-white">Save</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="card bg-primary">
-                <div class="card-header">
-                    <i class="fas fa-book-open" style="color:var(--text-color)">Create Category</i>
-                </div>
-                <div class="card-body">
-                    <lable class="form-label text-white">Category</lable>
-                    <input class="form-control">
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-primary text-white">Save</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="card bg-primary">
-                <div class="card-header">
-                    <i class="fas fa-book-open" style="color:var(--text-color)">Create Category</i>
-                </div>
-                <div class="card-body">
-                    <lable class="form-label text-white">Category</lable>
-                    <input class="form-control">
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-primary text-white">Save</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="card bg-primary">
-                <div class="card-header">
-                    <i class="fas fa-book-open" style="color:var(--text-color)">Create Category</i>
-                </div>
-                <div class="card-body">
-                    <lable class="form-label text-white">Category</lable>
-                    <input class="form-control">
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-primary text-white">Save</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="card bg-primary">
-                <div class="card-header">
-                    <i class="fas fa-book-open" style="color:var(--text-color)">Create Category</i>
-                </div>
-                <div class="card-body">
-                    <lable class="form-label text-white">Category</lable>
-                    <input class="form-control">
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-primary text-white">Save</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="card bg-primary">
-                <div class="card-header">
-                    <i class="fas fa-book-open" style="color:var(--text-color)">Create Category</i>
-                </div>
-                <div class="card-body">
-                    <lable class="form-label text-white">Category</lable>
-                    <input class="form-control">
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-primary text-white">Save</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="card bg-primary">
-                <div class="card-header">
-                    <i class="fas fa-book-open" style="color:var(--text-color)">Create Category</i>
-                </div>
-                <div class="card-body">
-                    <lable class="form-label text-white">Category</lable>
-                    <input class="form-control">
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-primary text-white">Save</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="card bg-primary">
-                <div class="card-header">
-                    <i class="fas fa-book-open" style="color:var(--text-color)">Create Category</i>
-                </div>
-                <div class="card-body">
-                    <lable class="form-label text-white">Category</lable>
-                    <input class="form-control">
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-primary text-white">Save</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <div class="card bg-primary">
-                <div class="card-header">
-                    <i class="fas fa-book-open" style="color:var(--text-color)">Create Category</i>
-                </div>
-                <div class="card-body">
-                    <lable class="form-label text-white">Category</lable>
-                    <input class="form-control">
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-primary text-white">Save</button>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
+@section('content')
+            <div class="row">
+            </div>
+            <br>
+            <div class="row justify-content-between custom-margin" id="card-style">
+                @foreach(\App\Models\Post::get() as $item)
+                    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 d-flex align-items-stretch">
+                        <div class="card p-0 mb-3 animate__animated animate__zoomIn">
+                            <div class="inner w-100">
+{{--                                <img class="card-img-top img-responsive w-100" src="" alt="Card image cap">--}}
+                                <a class="venobox" data-gall="img{{ $item->id }}" href="{{asset('storage/product_photo/'.$item['gallery'])}}"><img src="{{asset('storage/product_photo/'.$item['gallery'])}}" class="w-100" alt="image alt"/></a>
+                            </div>
+                            <div class="card-body text-center">
+                                <h3 class="card-title">
+                                    Balance- ({{$item['balance']}})Package
+                                </h3>
+                                <i class="text-black-50">(ဈေးနှုန်းအပြောင်းအလဲ ရှိနိုင်သည်)</i>
+                                <p>{{$item['name']}}</p>
+                                <p class="card-text ">
+                                    {{\Illuminate\Support\Str::substr($item['description'],0,35)}}....
+                                </p>
+                            </div>
+                            <div class="row">
+                                <div class="text-center">
+                                   <button class="animate__animated animate__fadeIn"><a href="{{route('welcome-detail',$item->id)}}" class=" mb-2 text-white text-nowrap align-items-center animate__animated animate__fadeIn">View Details</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+@endsection
+@push('scripts')
+    <script>
+        new VenoBox({
+            selector: '.venobox',
+            numeration: true,
+            infinigall: true,
+            share: true,
+            spinner: 'rotating-plane'
+        });
+    </script>
+
+@endpush

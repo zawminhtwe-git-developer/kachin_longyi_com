@@ -3,8 +3,6 @@
 
 // Variables
 @import 'variables';
-
-// Bootstrap
 $primary:#ed35ef;
 $secondary:#ffadf0;
 $success:#198754;
@@ -13,13 +11,13 @@ $warning:#ffc107;
 $danger:#dc3545;
 $light:#ff73ff;
 $dark:#b700bc;
-
-
+$offcanvas-horizontal-width:        100vh;
+$offcanvas-vertical-height:         100vh;
+// Bootstrap
 @import '~bootstrap/scss/bootstrap';
 @import "~bootstrap-icons";
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
 @import "~animate.css/animate.min.css";
 @import "~venobox/dist/venobox.min.css";
-@import url(~boxicons/css/boxicons.min.css);
-
-
+@import "~summernote/dist/summernote-bs5.min.css";
+@import "~boxicons";
