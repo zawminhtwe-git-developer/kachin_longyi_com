@@ -3,6 +3,7 @@
 use App\Http\Controllers\FacebookController;
 use App\Http\Controllers\GoogleController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
 use Laravel\Socialite\Facades\Socialite;
 
 /*
@@ -81,3 +82,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(["prefix"=>"admin","middleware"=>"auth"],function(){
 //    Route::get()
 });
+

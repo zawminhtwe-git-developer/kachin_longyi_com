@@ -33,7 +33,7 @@ Jorenvh\Share\Providers\ShareServiceProvider::class,
 
 class SocialShareController extends Controller
 {
-    public function index(Request $request){
+    public static function index(Request $request){
 
         $sharePage = Share::page(request()->url(),'Kachinlongyi.com Website သည် Customers များကို (၁၀၀%) ဝန်ဆောင်မှုပေးသော Online Shopping တစ်ခုဖြစ်ပါသည်။ Kachinlongyi.com မှ ဝယ်ယူသော ပစ္စည်းများကို သက်ဆိုင်ရာ မြို့နယ်အသီးသီးသို့ စာတိုက်မှလည်းကောင်း၊ ကားဂိတ်မှလည်းကောင်း ပို့ဆောင်ပေးလျက် ရှိနေပြီဖြစ်ပါသည်။ Kachinlongyi.com မှဝယ်ယူသော ပစ္စည်းများကို ငွေပေးချေရာတွင် KBZ Pay၊ Wave Money Pay၊ Myanmar Economic Bank တို့မှလည်း ပေးချေနိုင်ပြီဖြစ်ပါသည်။')
             ->facebook()
@@ -42,8 +42,8 @@ class SocialShareController extends Controller
             ->whatsapp()
             ->telegram()
             ->pinterest()->getRawLinks();
-//        return $sharePage;
-              return view("social-share",compact("sharePage"));
+        return $sharePage;
+//              return view("social-share",compact("sharePage"));
 
 
 

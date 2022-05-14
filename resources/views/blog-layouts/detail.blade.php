@@ -109,7 +109,6 @@
                         <p class="py-5"> Nothing to show relative image</p>
                     @endforelse
                 </div>
-
             </div>
         </div>
     </div>

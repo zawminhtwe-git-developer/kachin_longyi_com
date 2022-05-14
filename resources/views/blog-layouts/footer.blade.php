@@ -18,23 +18,30 @@
 
         <!-- Right -->
         <div>
-            <a href="#" class="me-4 text-reset">
+            <?php
+                $numeric_indexed_array = array_values($socialShare);
+                ?>
+            <a href="<?php print($numeric_indexed_array[0]) ?>" class="me-4 text-reset">
+
+
+
+
                 <i class="fab fa-facebook-f"></i>
             </a>
-            <a href="#" class="me-4 text-reset">
+            <a href="<?php print($numeric_indexed_array[1]) ?>" class="me-4 text-reset">
                 <i class="fab fa-twitter"></i>
             </a>
-            <a href="#" class="me-4 text-reset">
+            <a href="<?php print($numeric_indexed_array[2]) ?>" class="me-4 text-reset">
                 <i class="fab fa-linkedin"></i>
             </a>
-            <a href="#" class="me-4 text-reset">
+            <a href="<?php print($numeric_indexed_array[3]) ?>" class="me-4 text-reset">
                 <i class="fab fa-whatsapp"></i>
             </a>
-            <a href="#" class="me-4 text-reset">
+            <a href="<?php print($numeric_indexed_array[4]) ?>" class="me-4 text-reset">
                 <i class="fab fa-telegram"></i>
             </a>
 
-            <a href="#" class="me-4 text-reset">
+            <a href="<?php print($numeric_indexed_array[5]) ?>" class="me-4 text-reset">
                 <i class="fab fa-pinterest"></i>
             </a>
         </div>
@@ -90,16 +97,16 @@
                     <h6 class="text-uppercase fw-bold mb-4">
                         Share links
                     </h6>
-                    <p><a href="https://www.youtube.com/channel/UCP1BRx4dAtizWHhDqTyBLFQ">You Tube</a></p>
-                    <p><a href="#">Facebook</a></p>
-                    <p><a href="#">Twitter</a></p>
-                    <p><a href="#">What App</a></p>
-                    <p><a href="#">Printerest</a></p>
-                    {{--                        @foreach($sharePage as $key => $value)--}}
-                    {{--                            <p>--}}
-                    {{--                                <a href="{{$value}}" class="text-muted">{{ucfirst($key)}}</a>--}}
-                    {{--                            </p>--}}
-                    {{--                        @endforeach--}}
+
+
+                    @foreach($socialShare as $key => $value)
+                          <p> <a href="{{$value}}">{{$key}}</a></p>
+                    @endforeach
+
+
+
+
+
 
                 </div>
                 <!-- Grid column -->

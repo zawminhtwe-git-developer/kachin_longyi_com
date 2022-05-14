@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -585,7 +586,7 @@
 </div>
 <div class="container-fluid" style="margin-top: 5rem !important;">
     @yield('content')
-
+{{--    {{dd($socialShare)}}--}}
     @include('blog-layouts.footer')
 </div>
 
