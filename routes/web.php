@@ -31,13 +31,14 @@ Route::middleware(["isAdmin"])->group(function(){
     Route::get("/user-manager",[\App\Http\Controllers\UserManagementController::class,"index"])->name("user-manager.index");
     Route::post("/make-admin",[\App\Http\Controllers\UserManagementController::class,"makeAdmin"])->name("user-manager.makeAdmin");
     Route::post("/make-ban",[\App\Http\Controllers\UserManagementController::class,"makeBan"])->name("user-manager.ban");
+    Route::post("/unBan",[\App\Http\Controllers\UserManagementController::class,"unBan"])->name("user-manager.unBan");
     Route::resource("postGallery",\App\Http\Controllers\PostGalleryController::class);
 });
 Route::resource("category",\App\Http\Controllers\CategoryController::class);
 Route::resource("post",\App\Http\Controllers\PostController::class);
 
 
-Route::middleware(["auth"])->group(function(){
+Route::middleware(['auth','isBan'])->group(function(){
     //about-me == AboutZawMinHtweController
     Route::resource("aboutZawMinHtwe",\App\Http\Controllers\AboutZawMinHtweController::class);
     Route::get("profile",[\App\Http\Controllers\AboutZawMinHtweController::class,"profile"])->name("profile");
@@ -78,7 +79,14 @@ Route::resource("skill-share-comment",\App\Http\Controllers\SkillShareCommentCon
 //Route::get('/cartlist',[\App\Http\Controllers\CartController::class,"cartList"])->name('login.cart-list');
 
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => ['auth','isBan']],function(){
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::resource("post",\App\Http\Controllers\PostController::class);
+});
+
+
+
 Route::group(["prefix"=>"admin","middleware"=>"auth"],function(){
 //    Route::get()
 });

@@ -2,7 +2,12 @@
 @section("head")
 @endsection
 @section("content")
+
     <div class="container">
+        <x-bread-crumb>
+            <li class="breadcrumb-item"><a href="{{route('post.index')}}">All Products</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Order Lists</li>
+        </x-bread-crumb>
         <div class="row">
             <div class="col-12">
                 <table class="table table-bordered table-hover table-responsive mr-2">

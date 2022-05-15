@@ -44,19 +44,25 @@
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->role}}</td>
                                     <td>
-                                       @if($user->role == 0)
+                                       @if($user->role == 2)
                                            <form class="d-inline-block" action="{{route('user-manager.makeAdmin')}}" id="form{{ $user->id }}" method="post"><!-- အပြင်ကကောင်နဲ့ချိတ်ဆက်ဖို့ အတွက် ‌ဖောင်ကို အိုင်ဒီပေးထားခြင်း    -->
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{ $user->id }}">
-                                                <button type="button" class="btn btn-sm btn-outline-primary" onclick="return askConfirm({{$user->id}})">Make Admin</button> <!--  ဒေတာသယ်ဆောင်သွားမည် type မှာ button ထားးမှာ အလုပ်တန်းမလုပ်မှာ   -->
+                                                <button type="button" class="btn btn-sm btn-primary" onclick="return askConfirm({{$user->id}})">Make Admin</button> <!--  ဒေတာသယ်ဆောင်သွားမည် type မှာ button ထားးမှာ အလုပ်တန်းမလုပ်မှာ   -->
                                             </form>
-                                           @if($user->isBaned == 1)
-                                                <span class="btn btn-outline-danger bg-danger text-white">Banned</span>
-                                                @else
+                                           @if($user->isBaned == '1')
+{{--                                                1 is banded--}}
+                                                <form class="d-inline-block" action="{{route('user-manager.unBan')}}" id="banform{{ $user->id }}" method="post"><!-- အပြင်ကကောင်နဲ့ချိတ်ဆက်ဖို့ အတွက် ‌ဖောင်ကို အိုင်ဒီပေးထားခြင်း    -->
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="{{ $user->id }}">
+                                                    <button type="button" class="btn btn-sm btn-success" onclick="return banConfirm({{$user->id}})">Unban User</button> <!--  ဒေတာသယ်ဆောင်သွားမည် type မှာ button ထားးမှာ အလုပ်တန်းမလုပ်မှာ   -->
+                                                </form>
+                                                @elseif($user->isBaned == '0')
+{{--                                               0 is unbanded--}}
                                                 <form class="d-inline-block" action="{{route('user-manager.ban')}}" id="banform{{ $user->id }}" method="post"><!-- အပြင်ကကောင်နဲ့ချိတ်ဆက်ဖို့ အတွက် ‌ဖောင်ကို အိုင်ဒီပေးထားခြင်း    -->
                                                     @csrf
                                                     <input type="hidden" name="id" value="{{ $user->id }}">
-                                                    <button type="button" class="btn btn-sm btn-outline-danger" onclick="return banConfirm({{$user->id}})">Ban User</button> <!--  ဒေတာသယ်ဆောင်သွားမည် type မှာ button ထားးမှာ အလုပ်တန်းမလုပ်မှာ   -->
+                                                    <button type="button" class="btn btn-sm btn-danger" onclick="return banConfirm({{$user->id}})">Ban User</button> <!--  ဒေတာသယ်ဆောင်သွားမည် type မှာ button ထားးမှာ အလုပ်တန်းမလုပ်မှာ   -->
                                                 </form>
                                                @endif
                                         @endif

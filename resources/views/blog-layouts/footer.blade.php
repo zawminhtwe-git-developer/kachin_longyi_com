@@ -19,12 +19,11 @@
         <!-- Right -->
         <div>
             <?php
+            // to get data from view sahre $socialShare
+
                 $numeric_indexed_array = array_values($socialShare);
                 ?>
             <a href="<?php print($numeric_indexed_array[0]) ?>" class="me-4 text-reset">
-
-
-
 
                 <i class="fab fa-facebook-f"></i>
             </a>
@@ -97,17 +96,9 @@
                     <h6 class="text-uppercase fw-bold mb-4">
                         Share links
                     </h6>
-
-
                     @foreach($socialShare as $key => $value)
-                          <p> <a href="{{$value}}">{{$key}}</a></p>
+                          <p> <a href="{{$value}}">{{ucfirst($key)}}</a></p>
                     @endforeach
-
-
-
-
-
-
                 </div>
                 <!-- Grid column -->
 

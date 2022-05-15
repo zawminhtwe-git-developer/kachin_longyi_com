@@ -7,6 +7,7 @@
     {{--    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">--}}
 @endsection
 @section('content')
+    <div class="row py-4"></div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">

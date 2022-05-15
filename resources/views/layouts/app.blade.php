@@ -425,7 +425,8 @@
         </div>
     </div>
     {{--offcanvas stop--}}
-    <main class="mt-5 pt-3">
+    <main class="mt-2 pt-2">
+        <div class="row py-4"></div>
         @yield('content')
     </main>
 </div>

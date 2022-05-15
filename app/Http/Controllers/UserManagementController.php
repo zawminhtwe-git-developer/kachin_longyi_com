@@ -23,7 +23,7 @@ class UserManagementController extends Controller
             "id"=>"required"
         ]);
         $currentUser =User::find($request->id);
-        if($currentUser->role == 1){
+        if($currentUser->role == 2){
             $currentUser->role = "0";
             $currentUser->update();
         }
@@ -42,9 +42,28 @@ class UserManagementController extends Controller
             $currentUser->update();
         }
 
-//        return redirect()->back();
-        return redirect()->back()->with("toast",["icon"=>"success","title"=>"Role Updated for".$currentUser->name."is Baned."]);
+        return redirect()->back()->with("toast",["icon"=>"success","title"=>"Baned for".$currentUser->name]);
+
+//        auth()->logout();
+//        return redirect()->route('login')->with("toast",["icon"=>"success","title"=>"Role Updated for".$currentUser->name."is Baned."]);
     }
+
+    public function unBan(Request $request){
+//        return $request;
+        $request->validate([
+            "id"=>"required"
+        ]);
+        $currentUser = User::find($request->id);
+        if($currentUser->isBaned == 1){
+            $currentUser->isBaned = "0";
+            $currentUser->update();
+        }
+
+//        return redirect()->back();
+        return redirect()->back()->with("toast",["icon"=>"success","title"=>"Unbanded for".$currentUser->name."......."]);
+    }
+
+
     public function changeProfile(){
         return view('user-manager.change-profile-info');
     }
