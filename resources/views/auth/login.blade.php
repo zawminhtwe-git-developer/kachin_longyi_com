@@ -417,10 +417,10 @@
 
                     <p class="social-text">Or Sign in with social platforms</p>
                     <div class="social-media">
-                        <a href="#" class="social-icon"> <i class="fab fa-facebook-f"></i> </a>
-                        <a href="#" class="social-icon"> <i class="fab fa-twitter"></i> </a>
-                        <a href="#" class="social-icon"> <i class="fab fa-google"></i> </a>
-                        <a href="#" class="social-icon"> <i class="fab fa-linkedin-in"></i> </a>
+                        <a href="{{ route("login.facebook") }}" class="social-icon"> <i class="fab fa-facebook-f"></i> </a>
+                        <a href="{{ route("login.github")}}" class="social-icon"> <i class="fab fa-github"></i> </a>
+                        <a href="{{ route("login.google") }}" class="social-icon"> <i class="fab fa-google"></i> </a>
+{{--                        <a href="#" class="social-icon"> <i class="fab fa-linkedin-in"></i> </a>--}}
                     </div>
                 </form>
 
@@ -464,10 +464,10 @@
                         <input type="submit" class="btn" value="Sign up" />
                     <p class="social-text">Or Sign up with social platforms</p>
                     <div class="social-media">
-                        <a href="#" class="social-icon"> <i class="fab fa-facebook-f"></i> </a>
-                        <a href="#" class="social-icon"> <i class="fab fa-twitter"></i> </a>
-                        <a href="#" class="social-icon"> <i class="fab fa-google"></i> </a>
-                        <a href="#" class="social-icon"> <i class="fab fa-linkedin-in"></i> </a>
+                        <a href="{{ route("login.facebook") }}" class="social-icon"> <i class="fab fa-facebook-f"></i> </a>
+                        <a href="{{ route("login.github")}}" class="social-icon"> <i class="fab fa-github"></i> </a>
+                        <a href="{{ route("login.google") }}" class="social-icon"> <i class="fab fa-google"></i> </a>
+{{--                        <a href="#" class="social-icon"> <i class="fab fa-linkedin-in"></i> </a>--}}
                     </div>
                 </form>
             </div>
@@ -479,14 +479,16 @@
                     <p class="text-center text-black-50">
                         Kachinlongyi.com Website သည် Customers များကို (၁၀၀%) ဝန်ဆောင်မှုပေးသော Online Shopping တစ်ခုဖြစ်ပါသည်။ Kachinlongyi.com မှ ဝယ်ယူသော ပစ္စည်းများကို သက်ဆိုင်ရာ မြို့နယ်အသီးသီးသို့ စာတိုက်မှလည်းကောင်း၊ ကားဂိတ်မှလည်းကောင်း ပို့ဆောင်ပေးလျက် ရှိနေပြီဖြစ်ပါသည်။ Kachinlongyi.com မှဝယ်ယူသော ပစ္စည်းများကို ငွေပေးချေရာတွင် KBZ Pay၊ Wave Money Pay၊ Myanmar Economic Bank တို့မှလည်း ပေးချေနိုင်ပြီဖြစ်ပါသည်။
                     </p>
-                    <button class="btn transparent" id="sign-up-btn"> Sign up </button> </div> <img src="log.svg" class="image" alt="" /> </div>
+                    <button class="btn transparent" id="sign-up-btn"> Sign up </button> </div>
+                <img src="{{asset("images/logo/profile real.jpg")}}" class="image" alt="" /> </div>
             <div class="panel right-panel">
                 <div class="content">
                     <h3>Partnership Kachin Longyi</h3>
                     <p class="text-center text-black-50">
                         Kachinlongyi.com Website သည် Customers များကို (၁၀၀%) ဝန်ဆောင်မှုပေးသော Online Shopping တစ်ခုဖြစ်ပါသည်။ Kachinlongyi.com မှ ဝယ်ယူသော ပစ္စည်းများကို သက်ဆိုင်ရာ မြို့နယ်အသီးသီးသို့ စာတိုက်မှလည်းကောင်း၊ ကားဂိတ်မှလည်းကောင်း ပို့ဆောင်ပေးလျက် ရှိနေပြီဖြစ်ပါသည်။ Kachinlongyi.com မှဝယ်ယူသော ပစ္စည်းများကို ငွေပေးချေရာတွင် KBZ Pay၊ Wave Money Pay၊ Myanmar Economic Bank တို့မှလည်း ပေးချေနိုင်ပြီဖြစ်ပါသည်။
                     </p>
-                    <button class="btn transparent" id="sign-in-btn"> Sign in </button> </div> <img src="register.svg" class="image" alt="" /> </div>
+                    <button class="btn transparent" id="sign-in-btn"> Sign in </button> </div>
+                <img src="{{asset("images/logo/profile real.jpg")}}" class="image" alt="" /> </div>
         </div>
     </div>
     <script>

@@ -23,8 +23,6 @@ Route::get("/", function () {
 
 Auth::routes(['verify'=>true]);
 
-
-
 Route::middleware(["isAdmin"])->group(function(){
     Route::get("/home", [App\Http\Controllers\HomeController::class,"index"])->middleware(['auth','verified'])->name("home");
     Route::resource("shareSkill",\App\Http\Controllers\ShareSkillController::class);
@@ -59,35 +57,49 @@ Route::get("welcome-detail/{id}",[\App\Http\Controllers\WelcomeController::class
 Route::post('welcome-search',[\App\Http\Controllers\WelcomeController::class,"search"])->name('welcome-search');
 Route::get("developer",[\App\Http\Controllers\BlogController::class,"shareSkills"])->name('developer');// skill share for blog page
 Route::get("social-share",[\App\Http\Controllers\SocialShareController::class,"index"]);
-
-Route::get("auth/google", [GoogleController::class, "redirectToGoogle"]);
-Route::get("auth/google/callback", [GoogleController::class, "handleGoogleCallback"]);
-
-Route::get("auth/facebook", [FacebookController::class, "redirectToFacebook"]);
-Route::get("auth/facebook/callback", [FacebookController::class, "handleFacebookCallback"]);
-
-Route::get('/auth/github/redirect', function () {
-    return Socialite::driver('github')->redirect();
-});
-
-Route::get('auth/social', [\App\Http\Controllers\Auth\LoginController::class,"show"])->name('social.login');
-Route::get('oauth/{driver}',  [\App\Http\Controllers\Auth\LoginController::class,"redirectToProvider"])->name('social.oauth');
-Route::get('oauth/{driver}/callback',  [\App\Http\Controllers\Auth\LoginController::class,"handleProviderCallback"])->name('social.callback');
-
 Route::resource("skill-share-comment",\App\Http\Controllers\SkillShareCommentController::class);
-
-//Route::get('/cartlist',[\App\Http\Controllers\CartController::class,"cartList"])->name('login.cart-list');
+Route::get('/cartlist',[\App\Http\Controllers\CartController::class,"cartList"])->name('login.cart-list');
 
 Auth::routes();
+
 
 Route::group(['middleware' => ['auth','isBan']],function(){
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource("post",\App\Http\Controllers\PostController::class);
 });
 
+//Google Login
+Route::get('login/google',[\App\Http\Controllers\Auth\LoginController::class,'redirectToGoogle'])->name('login.google');
+Route::get('login/google/callback',[\App\Http\Controllers\Auth\LoginController::class,'handleGoogleCallback']);
 
+//Facebook Login
+Route::get('login/facebook',[\App\Http\Controllers\Auth\LoginController::class,'redirectToFacebook'])->name('login.facebook');
+Route::get('login/facebook/callback',[\App\Http\Controllers\Auth\LoginController::class,'handleFacebookCallback']);
 
-Route::group(["prefix"=>"admin","middleware"=>"auth"],function(){
+//github Login
+Route::get('login/github',[\App\Http\Controllers\Auth\LoginController::class,'redirectToGithub'])->name('login.github');
+Route::get('login/github/callback',[\App\Http\Controllers\Auth\LoginController::class,'handleGithubCallback']);
+
+//Route::get("auth/facebook", [FacebookController::class, "redirectToFacebook"]);
+//Route::get("auth/facebook/callback", [FacebookController::class, "handleFacebookCallback"]);
+//
+//Route::get("auth/google", [GoogleController::class, "redirectToGoogle"]);
+//Route::get("auth/google/callback", [GoogleController::class, "handleGoogleCallback"]);
+//
+//
+//
+//Route::get('/auth/github/redirect', function () {
+//    return Socialite::driver('github')->redirect();
+//});
+//
+//Route::get('auth/social', [\App\Http\Controllers\Auth\LoginController::class,"show"])->name('social.login');
+//Route::get('oauth/{driver}',  [\App\Http\Controllers\Auth\LoginController::class,"redirectToProvider"])->name('social.oauth');
+//Route::get('oauth/{driver}/callback',  [\App\Http\Controllers\Auth\LoginController::class,"handleProviderCallback"])->name('social.callback');
+//Route::group(["prefix"=>"admin","middleware"=>"auth"],function(){
 //    Route::get()
-});
+//});
+
+
+
+
 

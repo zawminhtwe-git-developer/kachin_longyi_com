@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use Exception;
+use Laravel\Socialite\Two\InvalidStateException;
 
 class FacebookController extends Controller
 {
@@ -14,20 +15,24 @@ class FacebookController extends Controller
     {
         return Socialite::driver('facebook')->redirect();
     }
+
+
     public function handleFacebookCallback()
     {
+
         try {
 
-            $user = Socialite::driver('facebook')->user();
+            try {
+                $user = Socialite::driver('facebook')->user();
+            } catch (InvalidStateException $e) {
+                $user = Socialite::driver('facebook')->stateless()->user();
+            }
 
             $finduser = User::where('facebook_id', $user->id)->first();
-
             if($finduser){
-
                 Auth::login($finduser);
-
-                return redirect()->intended('dashboard');
-
+                return redirect()->route("home");
+//                return redirect()->intended('dashboard');
             }else{
                 $newUser = User::create([
                     'name' => $user->name,
@@ -35,14 +40,14 @@ class FacebookController extends Controller
                     'facebook_id'=> $user->id,
                     'password' => encrypt('123456dummy')
                 ]);
-
                 Auth::login($newUser);
+                return redirect()->route("home");
 
-                return redirect()->intended('dashboard');
+//                return redirect()->intended('dashboard');
             }
-
         } catch (Exception $e) {
-            dd($e->getMessage());
+              return redirect('auth/facebook');
+
         }
     }
 
