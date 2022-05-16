@@ -26,10 +26,11 @@ class StorePostRequest extends FormRequest
         return [
                 "category_id" => "required",
                 'name' => 'required|min:9|max:50',
-                'price' => 'required',
+                'sale_price' => 'required',
+                'purchase_price' => 'required',
                 "description" => "required",
                 "balance" => "required",
-                "gallery" => "required|mimetypes:image/jpeg,image/png|max:1024"
+                "gallery" => "required|mimetypes:image/jpeg,image/png|max:5120"
         ];
     }
 }

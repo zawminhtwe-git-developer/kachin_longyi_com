@@ -461,8 +461,10 @@
                     <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 d-flex align-items-stretch">
                         <div class="card p-0 mb-3 animate__animated animate__zoomIn">
                             <div class="inner w-100">
-{{--                                <img class="card-img-top img-responsive w-100" src="" alt="Card image cap">--}}
-                                <a class="venobox" data-gall="img{{ $item->id }}" href="{{asset('storage/product_photo/'.$item['gallery'])}}"><img src="{{asset('storage/product_photo/'.$item['gallery'])}}" class="w-100" alt="image alt"/></a>
+
+                                <a class="venobox" data-gall="img{{ $item->id }}" href="{{asset('storage/product_photo/'.$item['gallery'])}}">
+                                    <img src="{{asset('storage/product_photo/'.$item['gallery'])}}" class="w-100" alt="image alt"/>
+                                </a>
                             </div>
                             <div class="card-body text-center">
                                 <h3 class="card-title">

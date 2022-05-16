@@ -66,7 +66,8 @@ class PostController extends Controller
         $products = new Post();
         $products->category_id = $request->category_id;
         $products->name = $request->name;
-        $products->price = $request->price;
+        $products->sale_price = $request->sale_price;
+        $products->purchase_price = $request->purchase_price;
         $products->description = $request->description;
         $products->balance = $request->balance;
 
@@ -115,10 +116,11 @@ class PostController extends Controller
     {
         $request->validate([
             'name' => 'required|min:9|max:50',
-            'price' => 'required',
+            'purchase_price' => 'nullable',
+            'sale_price' => 'nullable',
             "category_id" => "required",
-            "description" => "required",
-            "balance" => "required",
+            "description" => "nullable",
+            "balance" => "nullable",
             "gallery" => "sometimes|mimetypes:image/jpeg,image/png|max:1024"
         ]);
         if($request->hasFile('gallery')){
@@ -132,7 +134,8 @@ class PostController extends Controller
         }
 
         $post->name = $request->name;
-        $post->price = $request->price;
+        $post->purchase_price = $request->purchase_price;
+        $post->sale_price = $request->sale_price;
         $post->category_id = $request->category_id;
         $post->description = $request->description;
         $post->balance = $request->balance;

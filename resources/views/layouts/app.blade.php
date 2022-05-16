@@ -434,7 +434,30 @@
 <script src="{{ asset('js/app.js') }}"></script>
 @yield('foot')
 @stack("scripts")
+@if(session('status'))
+    <script>
+        let toastInfo = @json(session('status'));
+        // alert(toastInfo)
 
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'bottom-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
 
+        Toast.fire({
+            icon: toastInfo.icon,
+            title: toastInfo.title
+        })
+
+    </script>
+@endif
 </body>
 </html>
+

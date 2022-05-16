@@ -17,7 +17,8 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->bigInteger('category_id');
             $table->string('name');
-            $table->integer('price');
+            $table->integer('sale_price');
+            $table->integer('purchase_price');
             $table->longText('description');
             $table->string('gallery');
             $table->integer('balance');

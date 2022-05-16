@@ -29,7 +29,7 @@
                         <tr class="">
                             <td>{{$product->id}}</td>
                             <td>{{$product->name}}</td>
-                            <td>{{$product->price}}</td>
+                            <td>{{$product->sale_price}}</td>
                             <td>{{$product->category->title}}</td>
                             <td>{{\Illuminate\Support\Str::substr($product->description,0,100)}}</td>
                             <td>  <img src="{{ asset('storage/product_photo/'.$product->gallery) }}" class="" style="width: 40px" alt=""></td>

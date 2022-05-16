@@ -19,7 +19,8 @@
                     <tr class="text-nowrap text-center">
                         <th>No</th>
                         <th>Name</th>
-                        <th>Price</th>
+                        <th>Purchase Price</th>
+                        <th>Sale Price</th>
                         <th>Category</th>
                         <th>Description</th>
                         <th>Photo</th>
@@ -33,7 +34,8 @@
                         <tr class="">
                             <td>{{$product->id}}</td>
                             <td>{{$product->name}}</td>
-                            <td>{{$product->price}}</td>
+                            <td>{{$product->purchase_price}}</td>
+                            <td>{{$product->sale_price}}</td>
                             <td>
 {{--                                product talbe ကနေ category table ကို လှမ်းပြီးချိတ်ဆက်ယူထားခြင်း ဖြစ်ပါသည်။ အကယ်၍ category table ကိုမှားဖြတ်လိုက်ရင် --}}
                                 @isset($product->category)

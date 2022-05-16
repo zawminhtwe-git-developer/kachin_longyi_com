@@ -34,13 +34,22 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="price">Price</label>
-                                <input type="text" class="form-control" name="price" id="price"
-                                       aria-describedby="emailHelp" value="{{old('price')}}">
-                                @error("price")
+                                <label for="price">Purchase Price</label>
+                                <input type="text" class="form-control" name="purchase_price" id="price"
+                                       aria-describedby="emailHelp" value="{{old('purchase_price')}}">
+                                @error("purchase_price")
                                 <small class="text-danger font-weight-bold">{{ $message }}</small>
                                 @enderror
                             </div>
+                            <div class="form-group">
+                                <label for="price">Sale Price</label>
+                                <input type="text" class="form-control" name="sale_price" id="price"
+                                       aria-describedby="emailHelp" value="{{old('sale_price')}}">
+                                @error("sale_price")
+                                <small class="text-danger font-weight-bold">{{ $message }}</small>
+                                @enderror
+                            </div>
+
                             {{--                            <div class="form-group">--}}
                             {{--                                <label for="category">Category</label>--}}
                             {{--                                <input type="text" class="form-control" name="category" id="category" aria-describedby="emailHelp" value="{{old('category')}}">--}}
