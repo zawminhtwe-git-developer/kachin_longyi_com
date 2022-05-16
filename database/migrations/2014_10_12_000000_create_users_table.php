@@ -18,7 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique()->nullable();
             $table->string('provider_id')->nullable();
-            $table->string('avatar')->nullable();
+            $table->string('photo')->nullable();
+//            $table->string('avatar')->nullable();
 
             //Social login
             $table->timestamp('email_verified_at')->nullable();
