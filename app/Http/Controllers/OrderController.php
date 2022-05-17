@@ -22,9 +22,7 @@ class OrderController extends Controller
 //        return view('posts.index',['data'=>$data]);
 
         $orders = order::all();
-//        return $orders->pluck("user_id");
-
-
+//       return $orders->pluck("user_id");
         return view("order.index", compact("orders"));
     }
 
@@ -39,7 +37,7 @@ class OrderController extends Controller
         $total = $products = DB::table('carts')
             ->join('posts', 'carts.post_id', '=', 'posts.id')
             ->where('carts.user_id', $userId)
-            ->sum('posts.price');
+            ->sum('posts.sale_price');
 //        return $total;
         return view('order.create', ['total' => $total]);
     }
@@ -77,7 +75,7 @@ class OrderController extends Controller
         }
 //        return $request;
         $request->input();
-        return redirect()->back();
+        return redirect()->route('order.index')->with("status","You have just been submitted orders");
     }
 
     /**

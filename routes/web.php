@@ -80,6 +80,7 @@ Route::get('login/facebook/callback',[\App\Http\Controllers\Auth\LoginController
 Route::get('login/github',[\App\Http\Controllers\Auth\LoginController::class,'redirectToGithub'])->name('login.github');
 Route::get('login/github/callback',[\App\Http\Controllers\Auth\LoginController::class,'handleGithubCallback']);
 
+Route::get("/send-mail",[\App\Http\Controllers\MailController::class,"sendEmail"]);
 //Route::get("auth/facebook", [FacebookController::class, "redirectToFacebook"]);
 //Route::get("auth/facebook/callback", [FacebookController::class, "handleFacebookCallback"]);
 //

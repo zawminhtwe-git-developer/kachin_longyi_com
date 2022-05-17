@@ -1,5 +1,19 @@
 @extends('layouts.app')
-
+@section("head")
+    <style>
+        .cover-img{
+            margin-top: 15px;
+            height: 600px !important;
+            width: 400px !important;
+        }
+        @media (max-width: 790px) {
+            .cover-img {
+                height: 100% !important;
+                width: 100% !important;
+            }
+        }
+    </style>
+@endsection
 @section('content')
     <div class="container-fluid">
         <x-bread-crumb>
@@ -23,8 +37,8 @@
                         <form method="post" action="{{route('post.store')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="name">Product Name</label>
-                                <input type="text" class="form-control" name="name" id="name"
+                                <label for="name" title="ပစ္စည်းအမျိုးအမည်">Product Name</label>
+                                <input type="text" class="form-control" name="name" id="name" placeholder="ပစ္စည်းအမျိုးအမည်"
                                        aria-describedby="emailHelp" value="{{old('name')}}">
                                 @error("name")
                                 <small class="text-danger font-weight-bold">{{ $message }}</small>
@@ -34,16 +48,16 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="price">Purchase Price</label>
+                                <label for="price" title="ဝယ်ရင်းဈေးနှုန်း">Purchase Price</label>
                                 <input type="text" class="form-control" name="purchase_price" id="price"
-                                       aria-describedby="emailHelp" value="{{old('purchase_price')}}">
+                                   placeholder="ဝယ်ရင်းဈေးနှုန်း"    aria-describedby="emailHelp" value="{{old('purchase_price')}}">
                                 @error("purchase_price")
                                 <small class="text-danger font-weight-bold">{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="price">Sale Price</label>
-                                <input type="text" class="form-control" name="sale_price" id="price"
+                                <label for="price" title="ရောင်းဈေးနှုန်း">Sale Price</label>
+                                <input type="text" class="form-control" name="sale_price" id="price" placeholder="ရောင်းဈေးနှုန်း"
                                        aria-describedby="emailHelp" value="{{old('sale_price')}}">
                                 @error("sale_price")
                                 <small class="text-danger font-weight-bold">{{ $message }}</small>
@@ -66,6 +80,7 @@
                                         <div class="">
                                             <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
                                                 <select name="category_id" id="" class="form-control">
+{{--                                                    <option value="" autofocus>--Choose One--</option>--}}
                                                     @foreach($categories as $c)
                                                         <option value="{{ $c->id }}"> {{ $c->title }}</option>
                                                     @endforeach
@@ -98,24 +113,25 @@
 
 
                             <div class="form-group">
-                                <label for="description">Description</label>
-                                <textarea type="text" class="form-control" name="description" id="description"
+                                <label for="description" title="ဖော်ပြချက်ရေးရန်">Description</label>
+                                <textarea type="text" class="form-control" name="description" id="description" placeholder="ဖော်ပြချက်ရေးရန်"
                                           aria-describedby="emailHelp">{{old('description')}}</textarea>
                                 @error("description")
                                 <small class="text-danger font-weight-bold">{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="balance">Balance</label>
-                                <input type="text" class="form-control" name="balance" id="balance"
+                                <label for="balance" title="ပစ္စည်းလက်ကျန်">Balance</label>
+                                <input type="text" class="form-control" name="balance" id="balance" placeholder="ပစ္စည်းလက်ကျန်"
                                        aria-describedby="emailHelp" value="{{old('balance')}}">
                                 @error("balance")
                                 <small class="text-danger font-weight-bold">{{ $message }}</small>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="gallery">Photo</label>
-                                <input type="file" class="form-control p-1" name="gallery" id="gallery"
+                                <label for="gallery" title="ပုံတင်ရန် ပုံကိုနှိပ်ပါ">Photo</label>
+                                <img  src="{{ asset('images/logo/profile real.jpg') }}" id="galleryPreview" class="cover-img rounded @error('gallery') is-invalid border border-danger @enderror" alt="">
+                                <input type="file" class="form-control p-1 d-none" name="gallery" id="gallery" accept="image/jpeg,image/png"
                                        aria-describedby="emailHelp" value="{{old('gallery')}}">
                                 @error("gallery")
                                 <small class="text-danger font-weight-bold">{{ $message }}</small>
@@ -181,8 +197,39 @@
     </div>
 @endsection
 
-
-@push('scripts')
-
+@push("scripts")
+    <script>
+        let coverPreview = document.querySelector("#galleryPreview");
+        let cover = document.querySelector("#gallery");
+        coverPreview.addEventListener("click",_=>cover.click())
+        cover.addEventListener("change",_=>{
+            let file = cover.files[0];
+            let reader = new FileReader();
+            reader.onload = function (){
+                coverPreview.src = reader.result;
+            }
+            reader.readAsDataURL(file);
+        })
+    </script>
 @endpush
 
+{{--<form action="{{ route('aboutZawMinHtwe.store') }}" method="post" enctype="multipart/form-data">--}}
+{{--    @csrf--}}
+
+{{--    <div class="mb-4">--}}
+{{--        <img src="{{ asset('images/logo/profile real.jpg') }}" id="coverPreview" class="cover-img w-100 h-50 rounded @error('cover') is-invalid border border-danger @enderror" alt="">--}}
+{{--        <input type="file" name="cover" class="d-none" id="cover" accept="image/jpeg,image/png">--}}
+{{--        @error("cover")--}}
+{{--        <small class="invalid-feedback">{{ $message }}</small>--}}
+{{--        @enderror--}}
+{{--    </div>--}}
+
+
+{{--    <div class="text-center mb-4">--}}
+{{--        <button class="btn btn-lg btn-primary">--}}
+{{--            <i class="fas fa-credit-card text-white"></i>--}}
+{{--            Create Post--}}
+{{--        </button>--}}
+{{--    </div>--}}
+
+{{--</form>--}}

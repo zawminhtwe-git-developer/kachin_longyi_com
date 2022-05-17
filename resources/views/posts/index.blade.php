@@ -84,41 +84,51 @@
 @elseif(auth()->user()->role == 2)
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="row justify-content-between custom-margin" id="card-style">
+
+            <div class="row justify-content-between" id="">
                 @foreach(\App\Models\Post::get() as $item)
                     <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 d-flex align-items-stretch">
-                        <div class="card p-0 mb-3 animate__animated animate__backInLeft">
-                            <div class="inner">
-                                {{--                                <img class="card-img-top img-responsive w-100" src="" alt="Card image cap">--}}
-                                <a class="venobox " data-gall="img{{ $item->id }}"
-                                   href="{{asset('storage/product_photo/'.$item['gallery'])}}"><img
-                                        src="{{asset('storage/product_photo/'.$item['gallery'])}}" class="w-100"
-                                        alt="image alt"/></a>
+                        <div class="card mb-3 animate__animated animate__zoomIn">
+                            <div class="inner w-100">
+                                <a class="venobox" data-gall="img{{ $item->id }}" href="{{asset('storage/product_photo/'.$item['gallery'])}}">
+                                    <img src="{{asset('storage/product_photo/'.$item['gallery'])}}" class="w-100" style="height: 100%" alt="image alt"/>
+                                </a>
                             </div>
-                            <div class="card-body text-center">
-                                <h3 class="card-title">
-                                    Balance- ({{$item['balance']}})Package
-                                </h3>
-                                <i>(ဈေးနှုန်းအပြောင်းအလဲ ရှိနိုင်သည်)</i>
-                                <p>{{$item['name']}}</p>
+                            <div class="card-header">
+                                <h4 class="text-center"><i><b>"{{$item['name']}}"</b></i></h4>
+                            </div>
+                            <div class="card-body">
+
+                                <h4>Price - (<i><b>{{$item['sale_price']}}</b></i>) MMK</h4>
+                                <hr>
+                                <h4 class="card-title">
+                                    Balance- (<i><b>{{$item['balance']}}</b></i>)Package
+                                </h4>
+                                <hr>
                                 <p class="card-text ">
-                                    {{\Illuminate\Support\Str::substr($item['description'],0,35)}}....
+                                    {{\Illuminate\Support\Str::substr($item['description'],0,70)}}.... <a href="{{route('welcome-detail',$item->id)}}" class="text-black-50"><small>read more</small></a>
                                 </p>
                             </div>
                             <div class="row">
-                                <div class="text-center">
-                                    <button class="btn btn-primary mb-2 animate__animated animate__fadeIn"><a
-                                            href="{{route('welcome-detail',$item->id)}}"
-                                            class=" mb-2 text-white text-nowrap align-items-center animate__animated animate__fadeIn">View
-                                            Details</a></button>
+                                <div class="text-center d-flex justify-content-between p-3">
+                                    <div>
+                                        <button class="btn btn-outline-primary animate__fadeIn"><a href="{{route('welcome-detail',$item->id)}}" class=" mb-2 text-nowrap align-items-center animate__animated animate__fadeIn">View Details</a></button>
+                                    </div>
+                                    <div>
+                                        <form action="{{route("cart.store")}}" method="POST">
+                                            @csrf
+
+                                            <input type="hidden" name="post_id" value="{{$item['id']}}">
+                                            <button class="btn btn-outline-success mb-2 text-nowrap align-items-center animate__animated animate__fadeIn"><i class="fas fa-cart-plus">Add to Cart</i></button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 @endforeach
             </div>
-        </div>
+
         @endsection
         @elseif(auth()->user()->role == 1)
             <h2>Rloe 1</h2>

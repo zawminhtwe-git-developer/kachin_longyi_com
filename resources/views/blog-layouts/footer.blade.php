@@ -1,10 +1,19 @@
 <!-- Footer -->
-<style>
-    a{
-        color: white;
-        text-decoration: none;
-    }
-</style>
+    <style>
+        a{
+            color: white;
+            text-decoration: none;
+        }
+        @media (max-width: 790px) {
+            #content{
+                text-align: center !important;
+                text-indent:0px !important;
+            }
+        }
+    </style>
+
+
+
 
 <footer class="text-center text-lg-start footer-body-color text-white mb-0">
     <!-- Section: Social media -->
@@ -59,7 +68,7 @@
                     <h6 class="text-uppercase fw-bold mb-4">
                         <i class="fas fa-gem me-3"></i> "Sein" Kachinlongyi.com
                     </h6>
-                    <p>
+                    <p style="text-align: justify;text-indent: 60px; word-spacing: 2px" id="content">
                         Kachinlongyi.com Website သည် Customers များကို (၁၀၀%) ဝန်ဆောင်မှုပေးသော Online Shopping
                         တစ်ခုဖြစ်ပါသည်။ Kachinlongyi.com မှ ဝယ်ယူသော ပစ္စည်းများကို သက်ဆိုင်ရာ မြို့နယ်အသီးသီးသို့
                         စာတိုက်မှလည်းကောင်း၊ ကားဂိတ်မှလည်းကောင်း ပို့ဆောင်ပေးလျက် ရှိနေပြီဖြစ်ပါသည်။ Kachinlongyi.com
@@ -134,7 +143,7 @@
     <!-- Copyright -->
     <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
         © 2021 Copyright:
-        <a class="text-reset fw-bold" href="#">Develover => Zaw Min Htwe</a>
+        <a class="text-reset fw-bold" href="{{route("developer")}}" title="Zaw Min Htwe">Develover => ZMH</a>
     </div>
     <!-- Copyright -->
 

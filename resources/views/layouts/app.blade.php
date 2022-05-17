@@ -197,8 +197,20 @@
                                 @endif
                             @endif
                         </a>
-                    </li>
 
+                    </li>
+                    <li>
+                        <a href="{{route("cart.index")}}" class="nav-link px-3 {{request()->routeIs("cart.index")?"active":""}}">
+                            <span class="me-2">
+                                <i class="fas fa-cart-plus"></i>
+                            </span>
+                            <?php
+                            use App\Http\Controllers\CartController;
+                            $total = CartController::cartItem();
+                            ?>
+                            Cart({{$total}})
+                        </a>
+                    </li>
                     <li class="my-3">
                         <hr class="dropdown-divider">
                     </li>

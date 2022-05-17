@@ -12,14 +12,14 @@
                             Cart({{$total}})
                     </div>
                     <div class="card-body">
-                        <table class="table table-responsive table-hover table-bordered">
+                        <table class="table table-responsive table-hover table-bordered text-center">
                             <tr>
                                 <th>Title</th>
                                 <th>Description</th>
                                 <th>Image</th>
                                 <th>Controls</th>
                             </tr>
-                            @foreach($carts as $cart)
+                            @forelse($carts as $cart)
                             <tr>
                                 <td>
                                     {{$cart->name}}
@@ -34,7 +34,7 @@
                                     </a>
                                 </td>
                                 <td>
-                                    {{$cart->cart_id}}
+
                                     <form action="{{route("cart.destroy",$cart->cart_id)}}" method="post">
                                         @csrf
                                         @method("DELETE")
@@ -42,7 +42,9 @@
                                     </form>
                                 </td>
                             </tr>
-                            @endforeach
+                            @empty
+                                <td colspan="4" class="bg-danger text-white">There is nothing to show for choosing products</td>
+                            @endforelse
                         </table>
                     </div>
                     <div class="card-footer">
