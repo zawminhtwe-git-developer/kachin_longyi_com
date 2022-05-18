@@ -10,7 +10,6 @@
     <!--website title-->
     <title>@yield('title','Admin Dashboard')</title>
 
-
     <!--https://metatags.io-->
     <!-- Primary Meta Tags -->
     <title>Sein Sein Kachin Longyi</title>
@@ -40,7 +39,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+{{--    <link rel="stylesheet" href="{{asset('dashboard/css/style.css')}}"> Manual link join--}}
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @yield('head')
@@ -90,6 +89,19 @@
                 top: var(--topNavbarHeight);
                 height: calc(100% - var(--topNavbarHeight));
             }
+        }
+        #topBtn{
+            position: fixed;
+            bottom: 20px;
+            left: 12px;
+            font-size: 22px;
+            width: 50px;
+            height: 50px;
+            background: rgb(237, 35, 239);
+            color: #eeeeee;
+            border: none;
+            cursor: pointer;
+            display: none;
         }
 
     </style>
@@ -439,11 +451,18 @@
     {{--offcanvas stop--}}
     <main class="mt-2 pt-2">
         <div class="row py-4"></div>
+
         @yield('content')
+        <button class="fas fa-arrow-up" id="topBtn"></button>
     </main>
 </div>
+
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+{{-- Manual join with file--}}
+{{--<script src="{{asset('dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>--}}
+
+
 @yield('foot')
 @stack("scripts")
 @if(session('status'))
@@ -470,6 +489,22 @@
 
     </script>
 @endif
+<script>
+    //scrolltop start
+    $(document).ready(function(){
+        $(window).scroll(function(){
+            if($(this).scrollTop() > 40){
+                $("#topBtn").fadeIn();
+            }else{
+                $("#topBtn").fadeOut();
+            }
+        });
+        $("#topBtn").click(function(){
+            $('html,body').animate({scrollTop:0},800);
+        });
+    });
+    //scrolltop stop
+</script>
 </body>
 </html>
 

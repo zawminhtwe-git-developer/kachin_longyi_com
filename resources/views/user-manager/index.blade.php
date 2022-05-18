@@ -24,55 +24,57 @@
                 <div class="card">
                     <div class="card-header">User Lists</div>
                     <div class="card-body">
-                        <table class="table table-hover table-bordered w-100 table-responsive">
-                            <thead class="bg-primary text-white">
-                            <tr class="text-nowrap text-center">
-                                <th>No</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Role</th>
-                                <th>Control</th>
-                                <th>Created_at</th>
-                                <th>Updated_at</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($users as $user)
-                                <tr class="">
-                                    <td>{{$user->id}}</td>
-                                    <td>{{$user->name}}</td>
-                                    <td>{{$user->email}}</td>
-                                    <td>{{$user->role}}</td>
-                                    <td>
-                                       @if($user->role == 2)
-                                           <form class="d-inline-block" action="{{route('user-manager.makeAdmin')}}" id="form{{ $user->id }}" method="post"><!-- အပြင်ကကောင်နဲ့ချိတ်ဆက်ဖို့ အတွက် ‌ဖောင်ကို အိုင်ဒီပေးထားခြင်း    -->
-                                                @csrf
-                                                <input type="hidden" name="id" value="{{ $user->id }}">
-                                                <button type="button" class="btn btn-sm btn-primary" onclick="return askConfirm({{$user->id}})">Make Admin</button> <!--  ဒေတာသယ်ဆောင်သွားမည် type မှာ button ထားးမှာ အလုပ်တန်းမလုပ်မှာ   -->
-                                            </form>
-                                           @if($user->isBaned == '1')
-{{--                                                1 is banded--}}
-                                                <form class="d-inline-block" action="{{route('user-manager.unBan')}}" id="banform{{ $user->id }}" method="post"><!-- အပြင်ကကောင်နဲ့ချိတ်ဆက်ဖို့ အတွက် ‌ဖောင်ကို အိုင်ဒီပေးထားခြင်း    -->
-                                                    @csrf
-                                                    <input type="hidden" name="id" value="{{ $user->id }}">
-                                                    <button type="button" class="btn btn-sm btn-success" onclick="return banConfirm({{$user->id}})">Unban User</button> <!--  ဒေတာသယ်ဆောင်သွားမည် type မှာ button ထားးမှာ အလုပ်တန်းမလုပ်မှာ   -->
-                                                </form>
-                                                @elseif($user->isBaned == '0')
-{{--                                               0 is unbanded--}}
-                                                <form class="d-inline-block" action="{{route('user-manager.ban')}}" id="banform{{ $user->id }}" method="post"><!-- အပြင်ကကောင်နဲ့ချိတ်ဆက်ဖို့ အတွက် ‌ဖောင်ကို အိုင်ဒီပေးထားခြင်း    -->
-                                                    @csrf
-                                                    <input type="hidden" name="id" value="{{ $user->id }}">
-                                                    <button type="button" class="btn btn-sm btn-danger" onclick="return banConfirm({{$user->id}})">Ban User</button> <!--  ဒေတာသယ်ဆောင်သွားမည် type မှာ button ထားးမှာ အလုပ်တန်းမလုပ်မှာ   -->
-                                                </form>
-                                               @endif
-                                        @endif
-                                    </td>
-                                    <td>{{$user->created_at}}</td>
-                                    <td>{{$user->updated_at}}</td>
+                        <div class="col-12" style="overflow-x:auto; ">
+                            <table class="table table-hover table-bordered w-100 table-responsive">
+                                <thead class="bg-primary text-white">
+                                <tr class="text-nowrap text-center bg-primary text-white">
+                                    <th>No</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Control</th>
+                                    <th>Created_at</th>
+                                    <th>Updated_at</th>
                                 </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                @foreach($users as $user)
+                                    <tr class="">
+                                        <td>{{$user->id}}</td>
+                                        <td>{{$user->name}}</td>
+                                        <td>{{$user->email}}</td>
+                                        <td>{{$user->role}}</td>
+                                        <td>
+                                            @if($user->role == 2)
+                                                <form class="d-inline-block" action="{{route('user-manager.makeAdmin')}}" id="form{{ $user->id }}" method="post"><!-- အပြင်ကကောင်နဲ့ချိတ်ဆက်ဖို့ အတွက် ‌ဖောင်ကို အိုင်ဒီပေးထားခြင်း    -->
+                                                    @csrf
+                                                    <input type="hidden" name="id" value="{{ $user->id }}">
+                                                    <button type="button" class="btn btn-sm btn-primary" onclick="return askConfirm({{$user->id}})">Make Admin</button> <!--  ဒေတာသယ်ဆောင်သွားမည် type မှာ button ထားးမှာ အလုပ်တန်းမလုပ်မှာ   -->
+                                                </form>
+                                                @if($user->isBaned == '1')
+                                                    {{--                                                1 is banded--}}
+                                                    <form class="d-inline-block" action="{{route('user-manager.unBan')}}" id="banform{{ $user->id }}" method="post"><!-- အပြင်ကကောင်နဲ့ချိတ်ဆက်ဖို့ အတွက် ‌ဖောင်ကို အိုင်ဒီပေးထားခြင်း    -->
+                                                        @csrf
+                                                        <input type="hidden" name="id" value="{{ $user->id }}">
+                                                        <button type="button" class="btn btn-sm btn-success" onclick="return banConfirm({{$user->id}})">Unban User</button> <!--  ဒေတာသယ်ဆောင်သွားမည် type မှာ button ထားးမှာ အလုပ်တန်းမလုပ်မှာ   -->
+                                                    </form>
+                                                @elseif($user->isBaned == '0')
+                                                    {{--                                               0 is unbanded--}}
+                                                    <form class="d-inline-block" action="{{route('user-manager.ban')}}" id="banform{{ $user->id }}" method="post"><!-- အပြင်ကကောင်နဲ့ချိတ်ဆက်ဖို့ အတွက် ‌ဖောင်ကို အိုင်ဒီပေးထားခြင်း    -->
+                                                        @csrf
+                                                        <input type="hidden" name="id" value="{{ $user->id }}">
+                                                        <button type="button" class="btn btn-sm btn-danger" onclick="return banConfirm({{$user->id}})">Ban User</button> <!--  ဒေတာသယ်ဆောင်သွားမည် type မှာ button ထားးမှာ အလုပ်တန်းမလုပ်မှာ   -->
+                                                    </form>
+                                                @endif
+                                            @endif
+                                        </td>
+                                        <td>{{$user->created_at}}</td>
+                                        <td>{{$user->updated_at}}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

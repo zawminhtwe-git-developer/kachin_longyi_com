@@ -458,6 +458,20 @@
             width: 100%;
         }
 
+        #topBtn{
+            position: fixed;
+            bottom: 2px;
+            left: 12px;
+            font-size: 22px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--body-color);
+            color: #eeeeee;
+            border: none;
+            cursor: pointer;
+            display: none;
+        }
+
         /*cssbutton.io  ==  https://uiverse.io/ */
     </style>
 
@@ -589,12 +603,28 @@
     @yield('content')
 {{--    {{dd($socialShare)}}--}}
     @include('blog-layouts.footer')
+    <small id="topBtn" class="text-center"><i class="fas fa-arrow-up"></i></small>
 </div>
 
 <script src="{{ asset('js/app.js') }}"></script>
 
 @stack('scripts')
-
+<script>
+    //scrolltop start
+    $(document).ready(function(){
+        $(window).scroll(function(){
+            if($(this).scrollTop() > 40){
+                $("#topBtn").fadeIn();
+            }else{
+                $("#topBtn").fadeOut();
+            }
+        });
+        $("#topBtn").click(function(){
+            $('html,body').animate({scrollTop:0},800);
+        });
+    });
+    //scrolltop stop
+</script>
 </body>
 </html>
 

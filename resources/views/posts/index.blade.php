@@ -14,7 +14,7 @@
                <a href="{{ route('post.create') }}" class="btn btn-primary mb-2">Create New</a>
            </div>
             <div class="col-12" style="overflow-x:auto;">
-                <table class="table table-hover table-bordered table-responsive w-100 ">
+                <table class="table table-hover table-bordered table-responsive w-100">
                     <thead class="bg-primary text-white">
                     <tr class="text-nowrap text-center">
                         <th>No</th>
