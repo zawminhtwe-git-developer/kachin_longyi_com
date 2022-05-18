@@ -38,13 +38,14 @@ class SkillShareLikeController extends Controller
      */
     public function store(StoreskillShareLikeRequest $request)
     {
+
         //        return $request;
         $request->validate([
-
+            "user_id" =>"required|unique:skill_share_likes,user_id",
         ]);
 //        id 	share_skills_id 	comment 	like 	share 	created_at 	updated_at
         $skillShareLike = new skillShareLike();
-        $skillShareLike->user_id = Auth::user()->id;
+        $skillShareLike->user_id = $request->user_id;
         $skillShareLike->share_skills_id = $request->share_skills_id;
         $skillShareLike->save();
         return redirect()->back();

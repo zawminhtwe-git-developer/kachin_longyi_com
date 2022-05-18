@@ -93,7 +93,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //
 // })
 // welcome js stop
-const body = document.querySelector("body"),
+// const body = document.querySelector("body"),
+const body = document.querySelector("#nav-off"),
     nav = document.querySelector("nav"),
     modeToggle = document.querySelector(".dark-light"),
     searchToggle = document.querySelector(".searchToggle"),

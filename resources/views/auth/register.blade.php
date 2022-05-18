@@ -2,7 +2,13 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-between d-flex align-items-stretch">
+        <div class="col-md-4 align-items-center justify-content-center">
+            <div class="mb-2">
+                <img src="{{asset("images/logo/profile real.jpg")}}" style="max-height: 500px; object-fit:fill" class="d-block w-100 shadow-lg text-center" alt="...">
+                {{--                                <img src="{{ asset('images/logo/profile real.jpg') }}"--}}
+            </div>
+        </div>
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>

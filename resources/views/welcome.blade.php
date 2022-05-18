@@ -460,14 +460,15 @@
                 @foreach(\App\Models\Post::get() as $item)
                     <div class="col-12 col-sm-4 col-md-3 col-lg-3 col-xl-3 d-flex align-items-stretch">
                         <div class="card p-0 mb-3 animate__animated animate__zoomIn">
+                            <div class="card-header">
+                                <h4 class="text-center"><i><b>"{{$item['name']}}"</b></i></h4>
+                            </div>
                             <div class="inner w-100">
                                 <a class="venobox" data-gall="img{{ $item->id }}" href="{{asset('storage/product_photo/'.$item['gallery'])}}">
                                     <img src="{{asset('storage/product_photo/'.$item['gallery'])}}" class="w-100" style="height: 100%" alt="image alt"/>
                                 </a>
                             </div>
-                            <div class="card-header">
-                                 <h4 class="text-center"><i><b>"{{$item['name']}}"</b></i></h4>
-                            </div>
+
                             <div class="card-body">
 
                                 <h3>Price - (<i><b>{{$item['sale_price']}}</b></i>) MMK</h3>

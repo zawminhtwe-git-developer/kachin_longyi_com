@@ -300,6 +300,9 @@
         .dropdown-content a {
             color: var(--nav-color);
         }
+        .nav-img   {
+            display: none;
+        }
 
         @media (max-width: 790px) {
             nav .nav-bar .sidebarOpen {
@@ -321,6 +324,7 @@
 
             nav.active .menu {
                 left: -0%;
+                transition: all 0.3s;
             }
 
             nav.active .nav-bar .navLogo a {
@@ -353,9 +357,17 @@
                 display: block;
                 margin-top: 20px;
             }
+            .nav-img   {
+                display: block;
+            }
         }
 
         /*//welcome css stop*/
+
+
+
+
+
 
         /*//drop down css start*/
 
@@ -478,26 +490,31 @@
     @yield('head')
 </head>
 <body>
-<div class="">
+<div class="" style="overflow-x: auto">
     <nav>
         <div class="nav-bar">
             <i class='bx bx-menu bx-md sidebarOpen'></i>
-            <span class="logo navLogo text-nowrap"><a href="#">{{ config('app.name', 'Laravel') }}</a></span>
+            <span class="logo navLogo text-nowrap"><a href="{{url("/")}}">{{ config('app.name', 'Laravel') }}</a></span>
 
             <div class="menu">
                 <div class="logo-toggle">
-                    <span class="logo"><a href="#">{{config('app.name','Laravel')}}</a></span>
-                    <i class='bx bx-x bx-md sideBarClose'></i>
+                    <span class="logo"><a href="{{url("/")}}" id="nav-off">{{config('app.name','Laravel')}}</a></span>
+                    <i class='bx bx-x bx-md sideBarClose'>
                 </div>
-                <ul class="nav-links text-uppercase">
-                    <li><a href="{{route('welcome')}}"
+                <hr class="nav-img">
+                <div class="nav-img">
+                    <img src="{{asset("images/logo/profile real.jpg")}}" style="max-height: 500px; object-fit:fill" class="d-block w-100 shadow-lg text-center" alt="...">
+                </div>
+                <hr class="mb-0 nav-img">
+                <ul class="nav-links text-uppercase mt-0">
+                    <li><a href="{{route('welcome')}}" id="nav-off"
                            class="{{route('welcome')== request()->url()? "hover":""}}" title="မူလစာမျက်နှာ">Home</a>
                     </li>
                     <li class="dropdown">
                         <a href="javascript:void(0)" class="dropbtn" title="ထုတ်ကုန်ပစ္စည်းများ">Products</a>
                         <div class="dropdown-content">
                             @foreach(\App\Models\Category::all() as $category)
-                                <a href="{{route("category.show",$category->id)}}" class="nocolor text-nowrap" title="{{$category->hover}}">
+                                <a href="{{route("category.show",$category->id)}}" class="nocolor text-nowrap" title="{{$category->hover}}" id="nav-off">
                                     {{$category->title}}
                                 </a>
                             @endforeach
@@ -508,14 +525,14 @@
                         <li class="dropdown">
                             <a href="javascript:void(0)" class="dropbtn" title="အကြောင်းအရာများ">About</a>
                             <div class="dropdown-content">
-                                <a href="{{route('aboutZawMinHtwe.me')}}" class="nocolor text-nowrap" title="ကိုယ်ပိုင်ပိုစ်နှင့် အသုံးပြုသူ ပိုစ်များ">{{\Illuminate\Support\Facades\Auth::user()->name}} & Others</a>
+                                <a href="{{route('aboutZawMinHtwe.me')}}" id="nav-off" class="nocolor text-nowrap" title="ကိုယ်ပိုင်ပိုစ်နှင့် အသုံးပြုသူ ပိုစ်များ">{{\Illuminate\Support\Facades\Auth::user()->name}} & Others</a>
                             </div>
                         </li>
                     @else
                         <li class="dropdown">
                             <a href="javascript:void(0)" class="dropbtn" title="အကြောင်းအရာများ">About</a>
                             <div class="dropdown-content">
-                                <a href="{{route('aboutZawMinHtwe.me')}}" class="nocolor text-nowrap" title="အသုံးပြုသူ ပိုစ်များ">All Users Post</a>
+                                <a href="{{route('aboutZawMinHtwe.me')}}" id="nav-off" class="nocolor text-nowrap" title="အသုံးပြုသူ ပိုစ်များ">All Users Post</a>
                             </div>
                         </li>
                     @endif
@@ -523,18 +540,18 @@
                     <li class="dropdown">
                         <a href="javascript:void(0)" class="dropbtn">Portfolio</a>
                         <div class="dropdown-content">
-                            <a href="{{route('developer')}}" class="nocolor text-nowrap">Developer</a>
+                            <a href="{{route('developer')}}" id="nav-off" class="nocolor text-nowrap">Developer</a>
                         </div>
                     </li>
                     <li class="dropdown">
                         <a href="#" title="ဝန်ဆောင်မှုများ">Services</a>
                         <div class="dropdown-content">
-                            <a href="https://youtu.be/ycFJcFA2bfk" class="nocolor text-nowrap">HTML</a>
-                            <a href="https://youtu.be/k9noJBieBnE" class="nocolor text-nowrap">CSS</a>
-                            <a href="#" class="nocolor text-nowrap">Java Script</a>
-                            <a href="#" class="nocolor text-nowrap">PHP</a>
-                            <a href="#" class="nocolor text-nowrap">Laravel</a>
-                            <a href="#" class="nocolor text-nowrap">Bulid Website</a>
+                            <a href="https://youtu.be/ycFJcFA2bfk" id="nav-off" class="nocolor text-nowrap">HTML</a>
+                            <a href="https://youtu.be/k9noJBieBnE" id="nav-off" class="nocolor text-nowrap">CSS</a>
+                            <a href="#" id="nav-off" class="nocolor text-nowrap">Java Script</a>
+                            <a href="#" id="nav-off" class="nocolor text-nowrap">PHP</a>
+                            <a href="#" id="nav-off" class="nocolor text-nowrap">Laravel</a>
+                            <a href="#" id="nav-off" class="nocolor text-nowrap">Bulid Website</a>
                         </div>
                     </li>
                     <li class="dropdown">
@@ -543,20 +560,20 @@
                                 Account</a>
                         @endguest
                         @auth()
-                                <a href="javascript:void(0)" class="dropbtn text-nowrap" title="အဓိကစာမျက်နှာ">Main Page</a>
+                                <a href="javascript:void(0)" class="dropbtn text-nowrap" title="အဓိကစာမျက်နှာ" id="nav-off">Main Page</a>
                             @endauth
                         <div class="dropdown-content">
                             @if (Route::has('login'))
                                 @auth
                                     @if(\Illuminate\Support\Facades\Auth::user()->role == 0)
-                                        <a href="{{ url('/home') }}" class="nocolor text-nowrap text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+                                        <a href="{{ url('/home') }}" class="nocolor text-nowrap text-sm text-gray-700 dark:text-gray-500 underline" id="nav-off">Dashboard</a>
                                     @else
-                                        <a href="{{ url('/post') }}" class="nocolor text-nowrap text-sm text-gray-700 dark:text-gray-500 underline">All Products</a>
+                                        <a href="{{ url('/post') }}" class="nocolor text-nowrap text-sm text-gray-700 dark:text-gray-500 underline" id="nav-off">All Products</a>
                                     @endif
                                 @else
-                                    <a href="{{ route('login') }}" class="nocolor text-nowrap text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+                                    <a href="{{ route('login') }}" class="nocolor text-nowrap text-sm text-gray-700 dark:text-gray-500 underline" id="nav-off">Log in</a>
                                     @if (Route::has('register'))
-                                        <a href="{{ route('register') }}" class="nocolor text-nowrap ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                                        <a href="{{ route('register') }}" class="nocolor text-nowrap ml-4 text-sm text-gray-700 dark:text-gray-500 underline" id="nav-off">Register</a>
                                     @endif
                                 @endauth
                             @endif
@@ -570,7 +587,7 @@
 
                         <li>
                             <a href="{{route('cart.index')}}"
-                               class="{{route('cart.index')== request()->url()? "hover":""}}" title="">Cart({{$total}})</a>
+                               class="{{route('cart.index')== request()->url()? "hover":""}}" id="nav-off" title="">Cart({{$total}})</a>
                         </li>
                     @endauth
                 </ul>

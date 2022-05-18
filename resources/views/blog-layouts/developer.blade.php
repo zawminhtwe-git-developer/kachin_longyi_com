@@ -77,8 +77,13 @@
                             <span style="border: 1px solid silver; border-radius: 0.25em; padding: 0.5em;" class="d-flex justify-content-center align-items-center">
                              <form action="{{route("like.store")}}" method="post">
                                  @csrf
+                                @if(auth()->user())
+                                     <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
+                                @endif
                                  <input type="hidden" name="share_skills_id" value="{{$shareSkill->id}}">
-                                 <button class="btn btn-sm"><i class="fas fa-thumbs-up fa-fw"></i></button>
+                                 <button class="btn btn-sm">
+                                     <i class="fas fa-thumbs-up fa-fw"></i>
+                                 </button>
                              </form>
                                 <span class="badge bg-secondary py-2">
                                 {{\App\Models\skillShareLike::where("share_skills_id", $shareSkill->id)->count()}}
