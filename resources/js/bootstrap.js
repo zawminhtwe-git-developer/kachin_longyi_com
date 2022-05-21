@@ -94,12 +94,13 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 // })
 // welcome js stop
 // const body = document.querySelector("body"),
-const body = document.querySelector("#nav-off"),
+const body = document.querySelector("body"),
+    navOff = document.querySelector("#nav-off"),
     nav = document.querySelector("nav"),
     modeToggle = document.querySelector(".dark-light"),
     searchToggle = document.querySelector(".searchToggle"),
     sidebarOpen = document.querySelector(".sidebarOpen"),
-    siderbarClose = document.querySelector(".siderbarClose");
+    sideBarClose = document.querySelector(".sidebarClose");
 
 let getMode = localStorage.getItem("mode");
 if(getMode && getMode === "dark-mode"){
@@ -129,8 +130,12 @@ searchToggle.addEventListener("click" , () =>{
 sidebarOpen.addEventListener("click" , () =>{
     nav.classList.add("active");
 });
+ //js Code sideBarClose
+sideBarClose.addEventListener('click',()=>{
+    nav.classList.remove('active');
 
-body.addEventListener("click" , e =>{
+})
+navOff.addEventListener("click" , e =>{
     let clickedElm = e.target;
 
     if(!clickedElm.classList.contains("sidebarOpen") && !clickedElm.classList.contains("menu")){

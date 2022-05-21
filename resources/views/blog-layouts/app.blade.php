@@ -341,7 +341,7 @@
                 justify-content: space-between;
             }
 
-            .logo-toggle .sideBarClose {
+            .logo-toggle .sidebarClose {
                 color: var(--text-color);
                 font-size: 24px;
                 cursor: pointer;
@@ -406,7 +406,6 @@
             display: block;
             text-align: left;
         }
-
         .dropdown-content a:hover {
             background-color: var(--nav-color);
             border: 1px solid;
@@ -459,7 +458,7 @@
             z-index: -1;
             -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
             box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
-            transition: all 250ms
+            transition: all 250ms;
         }
 
         button:hover {
@@ -499,7 +498,7 @@
             <div class="menu">
                 <div class="logo-toggle">
                     <span class="logo"><a href="{{url("/")}}" id="nav-off">{{config('app.name','Laravel')}}</a></span>
-                    <i class='bx bx-x bx-md sideBarClose'>
+                    <i class='bx bx-x bx-md sidebarClose' id="nav-off"></i>
                 </div>
                 <hr class="nav-img">
                 <div class="nav-img">

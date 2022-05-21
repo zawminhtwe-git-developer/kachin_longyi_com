@@ -300,7 +300,7 @@
                 justify-content: space-between;
             }
 
-            .logo-toggle .sideBarClose {
+            .logo-toggle .sidebarClose {
                 color: var(--text-color);
                 font-size: 24px;
                 cursor: pointer;

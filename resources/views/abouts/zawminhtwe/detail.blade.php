@@ -160,7 +160,7 @@
 
                                             </p>
                                         </div>
-                                        <div class="">
+                                        <div class="d-flex justify-content-around">
                                             @auth()
                                                 @can("delete",$aboutZawMinHtwe)
                                                     <form

@@ -44,44 +44,83 @@
                 <div class="posts">
                     @forelse($aboutZawMinHtwes as $aboutZawMinHtwe)
 
-                        <div class="post mb-4 aboutzawminhtwe">
-                            <div class="row">
-                                <div class="col-lg-4">
+{{--                        <div class="post mb-4 aboutzawminhtwe">--}}
+{{--                            <div class="row">--}}
+{{--                                <div class="col-lg-4">--}}
+{{--                                    <a class="venobox" href="{{ asset("storage/cover/".$aboutZawMinHtwe->cover) }}" data-gall="img{{ $aboutZawMinHtwe->id }}">--}}
+{{--                                        <img src="{{ asset("storage/cover/".$aboutZawMinHtwe->cover) }}"   class="cover-img rounded-3 w-100 animate__animated animate__zoomIn" alt="">--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+{{--                                <div class="col-lg-8 bg-light">--}}
+{{--                                    <div class="d-flex flex-column justify-content-between h-350 py-4">--}}
+{{--                                        <div class="">--}}
+{{--                                            <h4 class="fw-bold">{{ $aboutZawMinHtwe->title }}</h4>--}}
+{{--                                            <p class="text-black-50" style="text-align: justify;  text-indent: 50px;   border-radius: 20px;">--}}
+{{--                                                {{ $aboutZawMinHtwe->excerpt }}--}}
+{{--                                            </p>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="d-flex justify-content-between align-items-center">--}}
+{{--                                            <div class="d-flex">--}}
+
+{{--                                                <img src="{{ isset($aboutZawMinHtwe->user)?asset('storage/profile/'.$aboutZawMinHtwe->user->photo): asset('images/logo/me.jpg')}}"--}}
+{{--                                                     class="user-img rounded-circle" alt="">--}}
+{{--                                                <img--}}
+{{--                                                    src="{{isset(Auth::user()->photo)? asset('storage/profile/'.Auth::user()->photo) : asset('images/logo/me.jpg')}}"--}}
+{{--                                                    alt="" class="user-img mb-4 rounded-circle border border-primary"--}}
+{{--                                                    alt="This image is not show alt data!">--}}
+{{--                                                <p class="mb-0 ms-2 small">--}}
+{{--                                                  @isset( $aboutZawMinHtwe->user)--}}
+{{--                                                        {{ $aboutZawMinHtwe->user->name }}--}}
+{{--                                                    @else--}}
+{{--                                                            Guest Account--}}
+{{--                                                    @endisset--}}
+{{--                                                    <br>--}}
+{{--                                                    <i class="fas fa-calendar"></i>--}}
+{{--                                                    {{ $aboutZawMinHtwe->created_at->format("d M Y") }}--}}
+{{--                                                </p>--}}
+{{--                                            </div>--}}
+{{--                                            <a href="{{route("aboutZawMinHtwe.detail",$aboutZawMinHtwe->slug)}}" class="btn btn-outline-primary">Read More</a>--}}
+{{--                                            <a href="{{route("aboutZawMinHtwe.show",$aboutZawMinHtwe->id)}}" class="btn btn-outline-primary">Read More ID</a>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--*********************************************************************************************--}}
+                        <div class="card mb-2" style="max-width: 100%;">
+                            <div class="row g-0">
+                                <div class="col-sm-5" style="background: #868e96;">
                                     <a class="venobox" href="{{ asset("storage/cover/".$aboutZawMinHtwe->cover) }}" data-gall="img{{ $aboutZawMinHtwe->id }}">
                                         <img src="{{ asset("storage/cover/".$aboutZawMinHtwe->cover) }}"   class="cover-img rounded-3 w-100 animate__animated animate__zoomIn" alt="">
                                     </a>
                                 </div>
-                                <div class="col-lg-8 bg-light">
-                                    <div class="d-flex flex-column justify-content-between h-350 py-4">
-                                        <div class="">
-                                            <h4 class="fw-bold">{{ $aboutZawMinHtwe->title }}</h4>
-                                            <p class="text-black-50" style="text-align: justify;  text-indent: 50px">
-                                                {{ $aboutZawMinHtwe->excerpt }}
-                                            </p>
-                                        </div>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="d-flex">
+                                <div class="col-sm-7">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $aboutZawMinHtwe->title }}</h5>
+                                        <p class="card-text">  {{ $aboutZawMinHtwe->excerpt }}</p>
 
-                                                <img src="{{ isset($aboutZawMinHtwe->user)?asset("storage/profile/".$aboutZawMinHtwe->user->photo):asset('images/logo/me.jpg')}}"
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-between">
+                                            <div class="d-flex justify-content-end">
+                                                <img src="{{ isset($aboutZawMinHtwe->user)?asset('storage/profile/'.$aboutZawMinHtwe->user->photo): asset('images/logo/me.jpg')}}"
                                                      class="user-img rounded-circle" alt="">
                                                 <p class="mb-0 ms-2 small">
-                                                  @isset( $aboutZawMinHtwe->user)
+                                                    @isset( $aboutZawMinHtwe->user)
                                                         {{ $aboutZawMinHtwe->user->name }}
                                                     @else
-                                                            Guest Account
+                                                        Guest Account
                                                     @endisset
                                                     <br>
                                                     <i class="fas fa-calendar"></i>
                                                     {{ $aboutZawMinHtwe->created_at->format("d M Y") }}
                                                 </p>
                                             </div>
-                                            <a href="{{route("aboutZawMinHtwe.detail",$aboutZawMinHtwe->slug)}}" class="btn btn-outline-primary">Read More</a>
-{{--                                            <a href="{{route("aboutZawMinHtwe.show",$aboutZawMinHtwe->id)}}" class="btn btn-outline-primary">Read More ID</a>--}}
-                                        </div>
+                                        <a href="{{route("aboutZawMinHtwe.detail",$aboutZawMinHtwe->slug)}}" class="btn btn-primary stretched-link">Read More</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
 
                     @empty
                             Ther is no post yet!
