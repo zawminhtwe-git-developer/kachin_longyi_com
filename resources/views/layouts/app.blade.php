@@ -142,7 +142,8 @@
                             <img src="{{isset(Auth::user()->photo)?asset('storage/profile/'.Auth::user()->photo) : asset('images/logo/me.jpg')}}" class="rounded-circle" style="width: 25px; height: 25px;" alt="">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{{route("profile")}}">Profile</a></li>
+{{--                            <li><a class="dropdown-item" href="{{route("user-manager.profile")}}">Profile</a></li>--}}
+{{--                            <li><a class="dropdown-item" href="{{route("")}}">Profile</a></li>--}}
                             <li><a class="dropdown-item" href="{{route("user-manager.changeProfile")}}">Edit Information</a></li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -453,7 +454,9 @@
         <div class="row py-4"></div>
 
         @yield('content')
-        <button class="fas fa-arrow-up" id="topBtn"></button>
+        <button class="fas fa-arrow-up" id="topBtn">
+            Top
+        </button>
     </main>
 </div>
 

@@ -319,7 +319,7 @@
                 background-color: var(--nav-color);
                 z-index: 100;
                 transition: all 0.4s ease;
-
+                overflow: scroll;
             }
 
             nav.active .menu {
@@ -339,6 +339,8 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+
+
             }
 
             .logo-toggle .sidebarClose {
@@ -360,6 +362,7 @@
             .nav-img   {
                 display: block;
             }
+
         }
 
         /*//welcome css stop*/
@@ -489,8 +492,8 @@
     @yield('head')
 </head>
 <body>
-<div class="" style="overflow-x: auto">
-    <nav>
+<div>
+    <nav class="" >
         <div class="nav-bar">
             <i class='bx bx-menu bx-md sidebarOpen'></i>
             <span class="logo navLogo text-nowrap"><a href="{{url("/")}}">{{ config('app.name', 'Laravel') }}</a></span>

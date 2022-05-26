@@ -114,6 +114,7 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
+//        return $request;
         $request->validate([
             'name' => 'required|min:9|max:50',
             'purchase_price' => 'nullable',

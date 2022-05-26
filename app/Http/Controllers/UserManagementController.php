@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\AboutZawMinHtwe;
 use App\Models\User;
 use App\Rules\MatchOldPassword;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -123,5 +125,8 @@ class UserManagementController extends Controller
         $user->email = $request->email;
         $user->update();
         return redirect()->route("user-manager.changeProfile")->with("toast",["icon"=>"success","title"=>"Your Email Updated"]);;
+    }
+    public function profile(){
+       return view("abouts.zawminhtwe.profile");
     }
 }

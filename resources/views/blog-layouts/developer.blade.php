@@ -100,7 +100,7 @@
                                     <i class="fas fa-share fa-fw"></i>
                                 </button>
                                 <span class="badge bg-secondary py-2">
-                                    22
+                                    0
                                 </span></span>
                         </div>
                     </div>

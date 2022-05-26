@@ -47,9 +47,15 @@
                     <div class="row">
                         <div class="">
                             <h4 class="fw-bold mb-4">{{ $aboutZawMinHtwe->title }}</h4>
-                            <img src="{{ asset("storage/cover/".$aboutZawMinHtwe->cover) }}"
-                                 class="cover-img rounded-3 w-100" alt="">
-                            <p class="text-black-50 mt-2" style="text-align: justify;  text-indent: 50px">
+
+{{--                            <img src="{{ asset("storage/cover/".$aboutZawMinHtwe->cover) }}"--}}
+{{--                                 class="cover-img rounded-3 w-100" alt="">--}}
+                            <a class="venobox" href="{{ asset("storage/cover/".$aboutZawMinHtwe->cover) }}" data-gall="img{{ $aboutZawMinHtwe->id }}">
+                                <img src="{{ asset("storage/cover/".$aboutZawMinHtwe->cover) }}"
+                                     class="rounded-3 w-100 animate__animated animate__zoomIn" alt="">
+                            </a>
+
+                            <p class="text-black-50 mt-2" style="text-align: justify;  text-indent: 50px; padding: 5vw">
                                 {{ $aboutZawMinHtwe->description }}
                             </p>
 
@@ -168,16 +174,16 @@
                                                         method="post" class="d-inline-block">
                                                         @csrf
                                                         @method("DELETE")
-                                                        <button class="btn btn-outline-danger">Delete</button>
+                                                        <button class="btn btn-outline-danger m-1">Delete</button>
                                                     </form>
                                                 @endcan
                                                 @can("update",$aboutZawMinHtwe)
                                                     <a href="{{route("aboutZawMinHtwe.edit",$aboutZawMinHtwe->id)}}"
-                                                       class="btn btn-outline-warning ">Edit</a>
+                                                       class="btn btn-outline-warning m-1">Edit</a>
                                                 @endcan
                                             @endauth
                                             <a href="{{route("aboutZawMinHtwe.index")}}"
-                                               class="btn btn-outline-primary">
+                                               class="btn btn-outline-primary m-1">
                                                 Read All</a>
                                         </div>
                                     </div>

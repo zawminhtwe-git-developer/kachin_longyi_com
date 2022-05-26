@@ -37,7 +37,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="price">Sale Price</label>
-                                <input type="text" class="form-control" name="price" id="sale_price" aria-describedby="emailHelp" value="{{$post->sale_price}}">
+                                <input type="text" class="form-control" name="sale_price" id="sale_price" aria-describedby="emailHelp" value="{{$post->sale_price}}">
                                 @error("sale_price")
                                 <small class="text-danger font-weight-bold">{{ $message }}</small>
                                 @enderror

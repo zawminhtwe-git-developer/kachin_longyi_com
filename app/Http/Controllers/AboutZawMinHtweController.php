@@ -26,10 +26,13 @@ class AboutZawMinHtweController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
 //        $aboutZawMinHtwes = AboutZawMinHtwe::all()->sortByDesc("created_date");
         $aboutZawMinHtwes = AboutZawMinHtwe::latest("id")->paginate(5);
+//        return $aboutZawMinHtwes;
         return view("abouts.zawminhtwe.index", compact('aboutZawMinHtwes'));
     }
 
@@ -95,6 +98,7 @@ class AboutZawMinHtweController extends Controller
      */
     public function show(AboutZawMinHtwe $aboutZawMinHtwe)
     {
+        return $aboutZawMinHtwe;
         return view("abouts.zawminhtwe.detail", compact("aboutZawMinHtwe"));
     }
 
@@ -162,8 +166,5 @@ class AboutZawMinHtweController extends Controller
              return view("abouts.zawminhtwe.zawminhtwe", compact('aboutZawMinHtwes'));
          }
 
-    public function profile(){
-        $aboutzawminhtwes = new AboutZawMinHtwe();
-        return view("abouts.zawminhtwe.profile",compact("aboutzawminhtwes"));
-    }
+
 }

@@ -39,11 +39,12 @@ Route::resource("post",\App\Http\Controllers\PostController::class);
 Route::middleware(['auth','isBan'])->group(function(){
     //about-me == AboutZawMinHtweController
     Route::resource("aboutZawMinHtwe",\App\Http\Controllers\AboutZawMinHtweController::class);
-    Route::get("profile",[\App\Http\Controllers\AboutZawMinHtweController::class,"profile"])->name("profile");
+//    Route::get("aboutZawMinHtwe-profile",[\App\Http\Controllers\AboutZawMinHtweController::class,"profile"])->name("aboutZawMinHtwe.profile");
     Route::get("aboutZawMinHtwe-detail/{slug}",[\App\Http\Controllers\AboutZawMinHtweController::class,"detail"])->name("aboutZawMinHtwe.detail");
     Route::resource("comment",\App\Http\Controllers\CommentController::class);
     Route::resource("gallery",\App\Http\Controllers\GalleryController::class);
     Route::get("/change-profile",[\App\Http\Controllers\UserManagementController::class,"changeProfile"])->name("user-manager.changeProfile");
+    Route::get("/-profile",[\App\Http\Controllers\UserManagementController::class,"profile"])->name("user-manager.profile");
     Route::post("/profile-change-photo",[\App\Http\Controllers\UserManagementController::class,"changePhoto"])->name("user-manager.changePhoto");
     Route::post("/change-password",[\App\Http\Controllers\UserManagementController::class,"changePassword"])->name("user-manager.changePassword");
     Route::post("/change-name",[\App\Http\Controllers\UserManagementController::class,"changeName"])->name("user-manager.changeName");

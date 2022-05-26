@@ -17,7 +17,7 @@
 
         .post{
             border-bottom: 1px solid black;
-            padding-bottom: 1.5rem;
+            /*padding-bottom: 1.5rem;*/
         }
 
         .post:last-child{
@@ -42,6 +42,7 @@
                 @endauth
 
                 <div class="posts">
+
                     @forelse($aboutZawMinHtwes as $aboutZawMinHtwe)
 
 {{--                        <div class="post mb-4 aboutzawminhtwe">--}}
@@ -87,14 +88,17 @@
 {{--                            </div>--}}
 {{--                        </div>--}}
 {{--*********************************************************************************************--}}
-                        <div class="card mb-2" style="max-width: 100%;">
+                        <div class="post card mb-2" style="max-width: 100%;">
                             <div class="row g-0">
                                 <div class="col-sm-5" style="background: #868e96;">
-                                    <a class="venobox" href="{{ asset("storage/cover/".$aboutZawMinHtwe->cover) }}" data-gall="img{{ $aboutZawMinHtwe->id }}">
-                                        <img src="{{ asset("storage/cover/".$aboutZawMinHtwe->cover) }}"   class="cover-img rounded-3 w-100 animate__animated animate__zoomIn" alt="">
-                                    </a>
+
+                                       <a class="venobox" href="{{ asset("storage/cover/".$aboutZawMinHtwe->cover) }}" data-gall="img{{ $aboutZawMinHtwe->id }}">
+                                           <img src="{{ asset("storage/cover/".$aboutZawMinHtwe->cover) }}"
+                                                class="cover-img rounded-3 w-100 animate__animated animate__zoomIn" alt="">
+                                       </a>
+
                                 </div>
-                                <div class="col-sm-7">
+                                <div class="col-sm-7 d-flex flex-column">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $aboutZawMinHtwe->title }}</h5>
                                         <p class="card-text">  {{ $aboutZawMinHtwe->excerpt }}</p>
